@@ -1,0 +1,24 @@
+displayname: '§8[§4My Prefix§8] §c§7§oBanjo§f'
+location:
+  x: '207.47'
+  y: '88.11'
+  z: '329.41'
+  yaw: '103.50'
+  pitch: '14.25'
+  world: world
+name: Banjo226
+ip: 127.0.0.1
+uuid: 787891df-5a80-3a31-b945-70d64bcfd870
+op: true
+banned:
+  temp:
+    banned: true
+    reason: 'Example of temp-ban'
+    end: 1449313915969
+    sender: '§8[§4Admin§8] §7§oTesterBot'
+history:
+  kicks:
+  - '§8[§e(AEDT) 26/11/15 03:34:23 PM§8] §6Example of History§e, Punisher: §6TesterBot'
+  bans:
+  - '§8[§e(AEDT) 26/11/15 03:56:42 PM§8] §6Example of temp-ban§e, Punisher: §6TesterBot'
+nickname: '&7&oBanjo'
