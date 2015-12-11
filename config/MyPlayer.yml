@@ -1,4 +1,4 @@
-displayname: '§8[§4My Prefix§8] §c§7§oBanjo§f'
+displayname: '§8[§4Mojang§8] §c§7§oNotch§f'
 location:
   x: '207.47'
   y: '88.11'
@@ -6,7 +6,7 @@ location:
   yaw: '103.50'
   pitch: '14.25'
   world: world
-name: Banjo226
+name: Notch
 ip: 127.0.0.1
 uuid: 787891df-5a80-3a31-b945-70d64bcfd870
 op: true
@@ -21,4 +21,4 @@ history:
   - '§8[§e(AEDT) 26/11/15 03:34:23 PM§8] §6Example of History§e, Punisher: §6TesterBot'
   bans:
   - '§8[§e(AEDT) 26/11/15 03:56:42 PM§8] §6Example of temp-ban§e, Punisher: §6TesterBot'
-nickname: '&7&oBanjo'
+nickname: '&7&oNotch'
