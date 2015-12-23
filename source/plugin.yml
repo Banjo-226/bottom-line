@@ -1,0 +1,752 @@
+name: BottomLine
+version: 1.2.2
+author: Banjo226
+main: com.Banjo226.BottomLine
+description: Play spigot, your way.
+website: https://www.spigotmc.org/resources/bottomline.15348/
+commands:
+  rules:
+    description: The rulebook of the server.
+    permission: bottomline.rules
+    aliases: [rulebook, rule, blrules]
+  motd:
+    description: Message of the Day!
+    permission: bottomline.motd
+    aliases: [messageoftheday, messageofd, blmotd]
+  broadcast:
+    description: Broadcast a message to the whole server.
+    permission: bottomline.broadcast
+    aliases: [bcast, bc, broadc, blbroadcast]
+  amsg:
+    description: Chat to other admins online.
+    permission: bottomline.adminchat
+    aliases: [amessage, a, ac, staffmsg, blamsg]
+  fly:
+    description: Soar the worlds of Minecraft!
+    permission: bottomline.fly
+    aliases: [soar, upandaway, blfly]
+  tp:
+    description: Teleport to another player.
+    permission: bottomline.teleport
+    aliases: [teleport, bltp, telep, tport]
+  tphere:
+    description: Teleport a player to your current location.
+    permission: bottomline.teleport.here
+    aliases: [s, teleporthere, tph, bltphere]
+  god:
+    description: Be almost invincible to everything.
+    permission: bottomline.god
+    aliases: [nodeath, constantgod, invincible, blgod]
+  tpa:
+    description: Request to teleport to players.
+    permission: bottomline.tpa
+    aliases: [tpr, request, call, bltpa]
+  tpahere:
+    description: Request to teleport another player to your location.
+    permission: bottomline.tpahere
+    aliases: [tpas, callhere, requesthere, bltpahere]
+  tppos:
+    description: Teleport to a location with supplied coordinates.
+    permission: bottomline.tppos
+    aliases: [tpposition, postp, bltp]
+  balance:
+    description: See your balance on the server.
+    permission: bottomline.balance
+    aliases: [bal, money, mymoney, account]
+  eco:
+    description: Change the balance of a player.
+    permission: bottomline.balance.modify
+    aliases: [econ, economy, balchange, changebal]
+  pay:
+    description: Pay money to another player.
+    permission: bottomline.pay
+    aliases: [sendmoney, paymypal, paypal]
+  msg:
+    description: Message something to another player.
+    permission: bottomline.message
+    aliases: [message, msg, m]
+  reply:
+    description: Respond to the most recent message.
+    permission: bottomline.message.reply
+    aliases: [r, blreply, blr]
+  tptoggle:
+    description: Enable/disable people teleporting to you.
+    permission: bottomline.teleport.toggle
+    aliases: [toggletp, notp, enabletp]
+  break:
+    description: Break the block you're looking at.
+    permission: bottomline.break
+    aliases: [breakblock, bb, blockbreak, blbreak]
+  afk:
+    description: Go AFK on the server.
+    permission: bottomline.afk
+    aliases: [away, blafk]
+  ping:
+    description: Get the connection in ms for you or others.
+    permission: bottomline.ping
+    aliases: [con, connection, blping]
+  feed:
+    description: Restore your hunger level.
+    permission: bottomline.feed
+    aliases: [feedme, eat, blfeed]
+  heal:
+    description: Restore your health.
+    permission: bottomline.heal
+    aliases: [healme, blheal]
+  history:
+    description: Get the history of a player.
+    permission: bottomline.history
+    aliases: [story, previouspunishments, blhistory]
+  mute:
+    description: Silence a player in the chat.
+    permission: bottomline.mute
+    aliases: [silence, shush, blmute]
+  jail:
+    description: Send a player to a jail.
+    permission: bottomline.jail
+    aliases: [sentence, removefromcom, bljail]
+  jailutil:
+    description: Utilities used for jailing.
+    permission: bottomline.jail.util
+    aliases: [jutil, bljailutil]
+  kick:
+    description: Remove a player from the server.
+    permission: bottomline.kick
+    aliases: [remove, diminish, blkick]
+  freeze:
+    description: Freeze a player on the server.
+    permission: bottomline.freeze
+    aliases: [stopmoving, nomove, blfreeze]
+  core:
+    description: The core command for BottomLine
+    permission: bottomline.core
+    aliases: [bottomline, bl, blcore]
+  ban:
+    description: Banish a player from the server.
+    permission: bottomline.ban
+    aliases: [banish, goaway, stopplaying, blban]
+  unban:
+    description: Allow a player to join the server once again.
+    permission: bottomline.ban.unban
+    aliaes: [unbanish, allowplayer, blunban]
+  warp:
+    description: Teleport to a pinpointed location with a name.
+    permission: bottomline.warp
+    aliases: [pinpoint, tpwarp, blwarp]
+  warputil:
+    description: Warp utilities; creating and removing etc.
+    permission: bottomline.warp.util
+    aliases: [wutil, warputils, blwarputil]
+  inv:
+    description: Inventory utility command.
+    permission: bottomline.inventory
+    aliases: [inventory, invutil, blinv]
+  item:
+    description: Spawn an item into your inventory.
+    permission: bottomline.item
+    aliases: [i, givemeitem, blitem]
+  nick:
+    description: Change your display name.
+    permission: bottomline.nickname
+    aliases: [n, nickname, blnick]
+  strike:
+    description: Strike a player, or the block you look at
+    permission: bottomline.strike
+    aliases: [smite, lightning, light, blstrike]
+  cmdspy:
+    description: Enable the ability to see player commands
+    permission: bottomline.cmdspy
+    aliases: [cs, cspy, commandspy, blcmdspy]
+  list:
+    description: See all players online.
+    permission: bottomline.list
+    aliases: [who, online, onl, bllist]
+  powertool:
+    description: Bind a command to an item.
+    permission: bottomline.powertool
+    aliases: [pt, tool, bind, blpowertool]
+  tempban:
+    description: Temporarily ban a player.
+    permission: bottomline.ban.temp
+    aliases: [tb, tempb, bantemp, tempexempt, bltempban]
+  setspawn:
+    description: Set the spawn for the respawn location.
+    permission: bottomline.spawn.set
+    aliases: [sspawn, createspawn, blsetspawn]
+  spawn:
+    description: Teleport to one of the set spawns.
+    permission: bottomline.spawn
+    aliases: [sspawn, createspawn, blsetspawn]
+  delspawn:
+    description: Remove a spawn location.
+    permission: bottomline.spawn.remove
+    aliases: [remspawn. dspawm. bldelspawn]
+  gamemode:
+    description: Change the current gamemode.
+    permission: bottomline.gamemode
+    aliases: [gm, gmode, blgamemode]
+  home:
+    description: Go to a set location, remove it or set it.
+    permission: bottomline.home
+    aliases: [takemehome, house, blhome]
+  realname:
+    description: Reveal a players nickname!
+    permission: bottomline.realname
+    aliases: [rn, reveal, blrealname]
+  kit:
+    description: Get a kit that has been setup!
+    permission: bottomline.kit
+    aliases: [kits, tools, tool, blkit]
+  showkit:
+    description: Show the kits set from the config.
+    permission: bottomline.kit.showkit
+    aliases: [showtools, showkits, blshowkit]
+  ftp:
+    description: Override the tptoggle on a player.
+    permission: bottomline.teleport.force
+    aliases: [forcetp, tpo, forcefullytp, blftp]
+  whois:
+    description: Check the general information of a valid player.
+    permission: bottomline.whois
+    aliases: [whoisthat, infoabout, blwhois]
+  burn:
+    description: Set the desired player on fire.
+    permission: bottomline.burn
+    aliases: [setfire, burnthem, fireticks, blburn]
+  extinguish:
+    description: Extinguish the flames from a player.
+    permission: bottomline.extinguish
+    aliases: [nofire, removeflames, blextinguish]
+  time:
+    description: Change the current time in your world.
+    permission: bottomline.time
+    aliases: [settime, changetime, bltime]
+  hat:
+    description: Set your helmet to the item in your hand.
+    permission: bottomline.hat
+    aliases: [sethat, helmet, blhat]
+    
+permissions:
+  bottomline.*:
+    description: All permission nodes
+    default: op
+    children:
+      bottomline.rules: true
+      bottomline.motd: true
+      bottomline.broadcast: true
+      bottomline.adminchat: true
+      bottomline.adminchat.toggle: true
+      bottomline.fly: true
+      bottomline.fly.others: true
+      bottomline.teleport: true
+      bottomline.teleport.others: true
+      bottomline.teleport.here: true
+      bottomline.god: true
+      bottomline.god.others: true
+      bottomline.tpa: true
+      bottomline.tpahere: true
+      bottomline.tppos: true
+      bottomline.balance: true
+      bottomline.balance.others: true
+      bottomline.balance.modify: true
+      bottomline.balance.modify.others: true
+      bottomline.pay: true
+      bottomline.message: true
+      bottomline.message.format: true
+      bottomline.message.colour: true
+      bottomline.message.magic: true
+      bottomline.teleport.toggle: true
+      bottomline.teleport.toggle.others: true
+      bottomline.message.reply: true
+      bottomline.break: true
+      bottomline.afk: true
+      bottomline.ping: true
+      bottomline.afk.others: true
+      bottomline.feed: true
+      bottomline.feed.others: true
+      bottomline.heal: true
+      bottomline.heal.others: true
+      bottomline.history: true
+      bottomline.mute: true
+      bottomline.jail: true
+      bottomline.jail.util: true
+      bottomline.jail.modify: true
+      bottomline.ban: true
+      bottomline.ban.unban: true
+      bottomline.kick: true
+      bottomline.chat.override: true
+      bottomline.chat.exception: true
+      bottomline.chat.colour: true
+      bottomline.chat.format: true
+      bottomline.chat.magic: true
+      bottomline.plugins: true
+      bottomline.version: true
+      bottomline.freeze: true
+      bottomline.core: true
+      bottomline.core.reload: true
+      bottomline.core.status: true
+      bottomline.warp: true
+      bottomline.warp.list: true
+      bottomline.warp.util: true
+      bottomline.warp.create: true
+      bottomline.warp.remove: true
+      bottomline.warp.create.overwrite: true
+      bottomline.inventory: true
+      bottomline.inventory.open: true
+      bottomline.inventory.open.modify: true
+      bottomline.inventory.hasitem: true
+      bottomline.inventory.clear: true
+      bottomline.inventory.clear.others: true
+      bottomline.item: true
+      bottomline.nick: true
+      bottomline.nick.others: true
+      bottomline.cpsexception: true
+      bottomline.strike: true
+      bottomline.cmdspy: true
+      bottomline.cmdspy.others: true
+      bottomline.list: true
+      bottomline.powertool: true
+      bottomline.sings.modify.feed: true
+      bottomline.sings.modify.heal: true
+      bottomline.ban.temp: true
+      bottomline.spawn: true
+      bottomline.spawn.set: true
+      bottomline.spawn.remove: true
+      bottomline.gamemode: true
+      bottomline.gamemode.others: true
+      bottomline.gamemode.survival: true
+      bottomline.gamemode.creative: true
+      bottomline.gamemode.adventure: true
+      bottomline.home: true
+      bottomline.realname: true
+      bottomline.kit: true
+      bottomline.kit.costoverride: true
+      bottomline.kit.all: true
+      bottomline.kit.showkit: true
+      bottomline.signs.colour: true
+      bottomline.signs.format: true
+      bottomline.signs.magic: true
+      bottomline.teleport.force: true
+      bottomline.signs.modify.kit: true
+      bottomline.whois: true
+      bottomline.burn: true
+      bottomline.extinguish: true
+      bottomline.time: true
+      bottomline.hat: true
+  bottomline.adminchat.*:
+    description: All adminchat nodes
+    default: op
+    children:
+      bottomline.adminchat: true
+      bottomline.adminchat.toggle: true
+  bottomline.fly.*:
+    description: All fly nodes
+    default: op
+    children:
+      bottomline.fly: true
+      bottomline.fly.others: true
+  bottomline.god.*:
+    description: All god nodes
+    default: op
+    children:
+      bottomline.god: true
+      bottomline.god.others: true
+  bottomline.teleport.*:
+    description: All tp nodes
+    default: op
+    children:
+      bottomline.teleport: true
+      bottomline.teleport.others: true
+      bottomline.teleport.here: true
+      bottomline.teleport.toggle: true
+      bottomline.teleport.toggle.others: true
+      bottomline.tpa: true
+      bottomline.tpahere: true
+      bottomline.teleport.force: true
+  bottomline.balance.*:
+    description: Economy node
+    default: op
+    children:
+      bottomline.balance: true
+      bottomline.balance.others: true
+      bottomline.balance.modify: true
+      bottomline.balance.modify.others: true
+  bottomline.message.*:
+    description: All message nodes
+    default: op
+    children:
+      bottomline.message: true
+      bottomline.message.colour: true
+      bottomline.message.format: true
+      bottomline.message.magic: true
+      bottomline.message.reply: true
+  bottomline.chat.*:
+    description: All chat nodes
+    default: op
+    children:
+      bottomline.chat.override: true
+      bottomline.chat.exception: true
+      bottomline.chat.colour: true
+      bottomline.chat.format: true
+      bottomline.chat.magic: true
+  bottomline.ban.*:
+    description: All ban nodes
+    default: op
+    children:
+      bottomline.ban: true
+      bottomline.ban.unban: true
+      bottomline.ban.temp: true
+  bottomline.warp.*:
+    description: All warp nodes
+    default: op
+    children:
+      bottomline.warp: true
+      bottomline.warp.list: true
+      bottomline.warp.util: true
+      bottomline.warp.create: true
+      bottomline.warp.remove: true
+      bottomline.warp.create.overwrite: true
+  bottomline.inventory.*:
+    description: All inventory nodes
+    default: op
+    children:
+      bottomline.inventory: true
+      bottomline.inventory.open: true
+      bottomline.inventory.open.modify: true
+      bottomline.inventory.hasitem: true
+      bottomline.inventory.clear: true
+      bottomline.inventory.clear.others: true
+  bottomline.signs.*:
+    description: All signs nodes
+    default: op
+    children:
+      bottomline.sings.modify.feed: true
+      bottomline.sings.modify.heal: true
+      bottomline.signs.colour: true
+      bottomline.signs.format: true
+      bottomline.signs.magic: true
+      bottomline.signs.modify.kit: true
+  bottomline.spawn.*:
+    description: All spawn nodes
+    default: op
+    children:
+      bottomline.spawn: true
+      bottomline.spawn.set: true
+      bottomline.spawn.remove: true
+  bottomline.gamemode.*:
+    description: All gamemode nodes
+    default: op
+    children:
+      bottomline.gamemode: true
+      bottomline.gamemode.others: true
+      bottomline.gamemode.survival: true
+      bottomline.gamemode.creative: true
+      bottomline.gamemode.adventure: true
+  bottomline.kit.*:
+    description: All kit nodes
+    default: op
+    children:
+      bottomline.kit: true
+      bottomline.kit.all: true
+      bottomline.kit.costoverride: true
+      bottomline.kit.showkit: true
+  bottomline.rules:
+    description: Rules perm
+    default: true
+  bottomline.motd:
+    description: MOTD perm
+    default: true
+  bottomline.broadcast:
+    description: Broadcast perm
+    default: op
+  bottomline.adminchat:
+    description: Adminchat perm
+    default: op
+  bottomline.adminchat.toggle:
+    description: Adminchat toggle perm
+    default: op
+  bottomline.fly:
+    description: Fly perm
+    default: op
+  bottomline.fly.others:
+    description: Fly others perm
+    default: op
+  bottomline.teleport:
+    description: Teleport perm
+    default: op
+  bottomline.teleport.others:
+    description: Teleport others perm
+    default: op
+  bottomline.tpa:
+    description: Tpa perm
+    default: true
+  bottomline.tpahere:
+    description: Tpahere perm
+    default: true
+  bottomline.tppos:
+    description: Tppos perm
+    default: op
+  bottomline.teleport.here:
+    description: Tphere perm
+    default: op
+  bottomline.balance:
+    description: Balance perm
+    default: true
+  bottomline.balance.others:
+    description: Balance others perm
+    default: op
+  bottomline.balance.modify:
+    description: Balance modify perm
+    default: op
+  bottomline.balance.modify.others:
+    description: Balance modify others perm
+    default: op
+  bottomline.pay:
+    description: Pay perm
+    default: true
+  bottomline.message:
+    description: Message perm
+    default: true
+  bottomline.message.colour:
+    description: Message colour perm
+    default: op
+  bottomline.message.format:
+    description: Message format perm
+    default: op
+  bottomline.message.magic:
+    description: Message magic perm
+    default: op
+  bottomline.message.reply:
+    description: Reply perm
+    default: true
+  bottomline.teleport.toggle:
+    description: Teleport toggle perm
+    default: op
+  bottomline.teleport.toggle.others:
+    description: Teleport toggle others perm
+    default: op
+  bottomline.break:
+    description: Break perm
+    default: op
+  bottomline.afk:
+    description: AFK perm
+    default: true
+  bottomline.ping:
+    description: Ping perm
+    default: true
+  bottomline.afk.others:
+    description: Afk others perm
+    default: op
+  bottomline.feed:
+    description: Feed perm
+    default: true
+  bottomline.feed.others:
+    description: Feed others perm
+    default: op
+  bottomline.heal:
+    description: Heal perm
+    default: true
+  bottomline.heal.others:
+    description: Heal others perm
+    default: op
+  bottomline.history:
+    description: History perm
+    default: op
+  bottomline.mute:
+    description: Mute perms
+    defautlt: op
+  bottomline.jail:
+    description: Jail perms
+    defautlt: op
+  bottomline.jail.util:
+    description: Jail util perms
+    default: op
+  bottomline.jail.modify:
+    description: Jail modify perms
+    default: op
+  bottomline.kick:
+    description: Kick perm
+    default: op
+  bottomline.chat.grammar:
+    description: Grammar override perm
+    default: op
+  bottomline.chat.exception:
+    description: Chat exception perm
+    default: op
+  bottomline.chat.colour:
+    description: Colour perm
+    default: op
+  bottomline.chat.format:
+    description: Format perm
+    default: op
+  bottomline.chat.magic:
+    description: Magic perm
+    default: op
+  bottomline.plugins:
+    description: Plugins perm
+    default: op
+  bottomline.version:
+    description: Version perm
+    default: op
+  bottomline.freeze:
+    description: Freeze perm
+    default: op
+  bottomline.core:
+    description: Core perm
+    default: op
+  bottomline.core.reload:
+    description: Core reload perm
+    default: op
+  bottomline.core.status:
+    description: Core status perm
+    default: op
+  bottomline.ban:
+    description: Ban perm
+    default: op
+  bottomline.ban.unban:
+    description: Unban perm
+    default: op
+  bottomline.warp:
+    description: Warp perm
+    default: true
+  bottomline.warp.util:
+    description: Warp util perm
+    default: op
+  bottomline.warp.list:
+    description: Warp list perm
+    default: true
+  bottomline.warp.create:
+    description: Warp util perm
+    default: op
+  bottomline.warp.remove:
+    description: Warp util perm
+    default: op
+  bottomline.warp.create.overwrite:
+    description: Warp util perm
+    default: op
+  bottomline.inventory:
+    description: Inventory perm
+    default: true
+  bottomline.inventory.open:
+    description: Inventory open perm
+    default: true
+  bottomline.inventory.open.modify:
+    description: Inventory open modify perm
+    default: op
+  bottomline.inventory.hasitem:
+    description: Inventory hasitem perm
+    default: op
+  bottomline.inventory.clear:
+    description: Inventory clear perm
+    default: op
+  bottomline.inventory.clear.others:
+    description: Inventory clear others perm
+    default: op
+  bottomline.item:
+    description: Item perm
+    default: op
+  bottomline.nick:
+    description: Nick perm
+    default: true
+  bottomline.nick.others:
+    description: Nick others perm
+    default: op
+  bottomline.cpsexception:
+    description: CPS exception perm
+    default: op
+  bottomline.strike:
+    description: Strike perm
+    default: op
+  bottomline.cmdspy:
+    description: Command spy perm
+    default: op
+  bottomline.cmdspy.others:
+    description: Command spy others perm
+    default: op
+  bottomline.list:
+    description: List perm
+    default: true
+  bottomline.powertool:
+    description: Powertool perm
+    default: true
+  bottomline.sings.modify.heal:
+    description: Heal sign perm
+    default: op
+  bottomline.sings.modify.feed:
+    description: Feed sign perm
+    default: op
+  bottomline.ban.temp:
+    description: Temp ban perm
+    default: op
+  bottomline.spawn:
+    description: Spawn perm
+    default: true
+  bottomline.spawn.set:
+    description: Setspawm perm
+    default: op
+  bottomline.spawn.remove:
+    description: Delspawn perm
+    default: op
+  bottomline.gamemode:
+    description: Gamemode perm
+    default: true
+  bottomline.gamemode.others:
+    description: Gamemode others perm
+    default: op
+  bottomline.gamemode.survival:
+    description: Gamemode survival perm
+    default: true
+  bottomline.gamemode.creative:
+    description: Gamemode creative perm
+    default: op
+  bottomline.gamemode.adventure:
+    description: Gamemode adventure perm
+    default: true
+  bottomline.home:
+    description: Home perm
+    default: true
+  bottomline.realname:
+    description: Realname perm
+    default: true
+  bottomline.kit:
+    description: Kit perm
+    default: true
+  bottomline.kit.costoverride:
+    description: Kit cost override perm
+    default: op
+  bottomline.kit.all:
+    description: All kits perm
+    default: op
+  bottomline.kit.showkit:
+    description: Show kits perm
+    default: true
+  bottomline.signs.colour:
+    description: Signs colour perm
+    default: op
+  bottomline.signs.format:
+    description: Signs format perm
+    default: op
+  bottomline.signs.magic:
+    description: Signs magic perm
+    default: op
+  bottomline.teleport.force:
+    description: Force tp perm
+    default: op
+  bottomline.signs.modify.kit:
+    description: Signs modify kit perm
+    default: op
+  bottomline.whois:
+    description: Whois perm
+    default: op
+  bottomline.burn:
+    description: Burn perm
+    default: op
+  bottomline.extinguish:
+    description: Extinguish perm
+    default: op
+  bottomline.time:
+    description: Time perm
+    default: op
+  bottomline.hat:
+    description: Hat perm
+    default: true
