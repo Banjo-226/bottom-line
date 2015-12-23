@@ -1,0 +1,7 @@
+&8&m---------------------
+&4Welcome back, &c%display%
+&4Currently &c[&7%players%&4/&7%max%&c] &4online people
+&c%localtime% &4is the current time
+&4You have &c$%balance% &4in your balance
+&4Type &c/rules &4for the rulebook of the server!
+&8&m---------------------
