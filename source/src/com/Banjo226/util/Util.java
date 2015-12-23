@@ -99,59 +99,6 @@ public class Util {
 		player.playSound(player.getLocation(), Sound.LEVEL_UP, 1.0F, 1.0F);
 	}
 
-	public static String timeFromLong(long ms) {
-		ms = ms / 20;
-		StringBuilder sb = new StringBuilder(40);
-
-		if (ms / 628992000 > 0) {
-			long years = ms / 628992000;
-			sb.append(years + (years == 1 ? " year " : " years "));
-			ms -= years * 628992000;
-		}
-
-		if (ms / 2620800 > 0) {
-			long months = ms / 2620800;
-			sb.append(months + (months == 1 ? " month " : " months "));
-			ms -= months * 2620800;
-		}
-
-		if (ms / 604800 > 0) {
-			long weeks = ms / 604800;
-			sb.append(weeks + (weeks == 1 ? " week " : " weeks "));
-			ms -= weeks * 604800;
-		}
-
-		if (ms / 86400 > 0) {
-			long days = ms / 86400;
-			sb.append(days + (days == 1 ? " day " : " days "));
-			ms -= days * 86400;
-		}
-
-		if (ms / 3600 > 0) {
-			long hours = ms / 3600;
-			sb.append(hours + (hours == 1 ? " hour " : " hours "));
-			ms -= hours * 3600;
-		}
-
-		if (ms / 60 > 0) {
-			long minutes = ms / 60;
-			sb.append(minutes + (minutes == 1 ? " minute " : " minutes "));
-			ms -= minutes * 60;
-		}
-
-		if (ms > 0) {
-			sb.append(ms + " seconds ");
-		}
-
-		if (sb.length() > 1) {
-			sb.replace(sb.length() - 1, sb.length(), "");
-		} else {
-			sb = new StringBuilder("null");
-		}
-
-		return sb.toString();
-	}
-
 	public static String timeFromSeconds(long ms) {
 		StringBuilder sb = new StringBuilder(40);
 
