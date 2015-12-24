@@ -30,6 +30,7 @@ public class Hat extends Cmd {
 		
 		Player player = (Player) sender;
 		ItemStack item = player.getItemInHand();
+		ItemStack beforeHat = player.getInventory().getHelmet();
 		
 		if (item.getType().equals(Material.AIR)) {
 			sender.sendMessage("§cHat: §4You cannot set your hat as air!");
@@ -45,7 +46,7 @@ public class Hat extends Cmd {
 		}
 		
 		player.getInventory().setHelmet(item);
-		player.getInventory().setItemInHand(new ItemStack(Material.AIR));
+		player.getInventory().setItemInHand(beforeHat);
 		
 		sender.sendMessage("§6Hat: §eEnjoy your new hat!");
 	}
