@@ -51,6 +51,17 @@ broadcast:
   timeoutInSeconds: 5
   actionbar-broadcast: true
 
+# CLEARCHAT #
+# This includes the format, whether there is a timeout or not. 
+# If timeout is false, the timeoutInSeconds wont be used.      
+# Ops and players with bottomline.admin will bypass timeouts.  
+clearchat:
+  format: '&8[&bClearChat&8] &c%message%'
+  timeout: false
+  timeoutInSeconds: 5
+  actionbar-broadcast: true
+  clearMessage: 'Chat Cleared'
+  
 # LAW #
 # This changes the messages for the law parts.
 # This also has the commands to block for muting and jailing

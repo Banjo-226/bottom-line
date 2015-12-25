@@ -225,6 +225,10 @@ commands:
     description: Set your helmet to the item in your hand.
     permission: bottomline.hat
     aliases: [sethat, helmet, blhat]
+  clearchat:
+    description: Removes all chat messages posted!
+    permission: bottomline.clearchat
+    aliases: [cc, chatclear, blclearchat]
     
 permissions:
   bottomline.*:
@@ -333,6 +337,7 @@ permissions:
       bottomline.extinguish: true
       bottomline.time: true
       bottomline.hat: true
+      bottomline.clearchat: true
   bottomline.adminchat.*:
     description: All adminchat nodes
     default: op
@@ -750,3 +755,6 @@ permissions:
   bottomline.hat:
     description: Hat perm
     default: true
+  bottomline.clearchat:
+    description: ClearChat perm
+    default: op
