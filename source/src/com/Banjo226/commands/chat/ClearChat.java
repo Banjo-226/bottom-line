@@ -25,7 +25,7 @@ public class ClearChat extends Cmd {
 				if (Store.cooldown.containsKey(sender.getName())) {
 					long secondsLeft = ((Store.cooldown.get(sender.getName()) / 1000) + cooldownTime) - (System.currentTimeMillis() / 1000);
 					if (secondsLeft >= 1) {
-						sender.sendMessage("§cOops! §4You can't broadcast for another " + secondsLeft + " seconds!");
+						sender.sendMessage("§cOops! §4You can't clear the chat for another " + secondsLeft + " seconds!");
 						return;
 					}
 				}
