@@ -22,8 +22,8 @@ public class ClearChat extends Cmd {
 			if (!sender.isOp()) {
 				int cooldownTime = pl.getConfig().getInt("clearchat.timeoutInSeconds");
 
-				if (Store.cooldown.containsKey(sender.getName())) {
-					long secondsLeft = ((Store.cooldown.get(sender.getName()) / 1000) + cooldownTime) - (System.currentTimeMillis() / 1000);
+				if (Store.clearchatcooldown.containsKey(sender.getName())) {
+					long secondsLeft = ((Store.clearchatcooldown.get(sender.getName()) / 1000) + cooldownTime) - (System.currentTimeMillis() / 1000);
 					if (secondsLeft >= 1) {
 						sender.sendMessage("§cOops! §4You can't clear the chat for another " + secondsLeft + " seconds!");
 						return;
@@ -34,7 +34,7 @@ public class ClearChat extends Cmd {
 
 		if (pl.getConfig().getBoolean("clearchat.timeout") == true) {
 			if (!sender.isOp()) {
-				Store.cooldown.put(sender.getName(), System.currentTimeMillis());
+				Store.clearchatcooldown.put(sender.getName(), System.currentTimeMillis());
 			}
 		}
 		
