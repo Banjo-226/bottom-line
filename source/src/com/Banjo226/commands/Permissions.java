@@ -61,6 +61,7 @@ public class Permissions {
 	public static final Permission EXTINGUISH = new Permission("bottomline.extinguish");
 	public static final Permission TIME = new Permission("bottomline.time");
 	public static final Permission HAT = new Permission("bottomline.hat");
+	public static final Permission CLEARCHAT = new Permission("bottomline.clearchat");
 
 	// Others-sub permissions [--> toggle for other people]
 	public static final Permission FLY_OTHERS = new Permission("bottomline.fly.others");

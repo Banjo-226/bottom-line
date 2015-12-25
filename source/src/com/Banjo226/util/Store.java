@@ -28,6 +28,7 @@ public class Store implements Listener {
 	public static List<String> cmdspy = Data.getInstance().getConfig().getStringList("spy.cmd.toggle");
 
 	public static HashMap<String, Long> cooldown = new HashMap<>();
+	public static HashMap<String, Long> clearchatcooldown = new HashMap<>();
 	public static HashMap<String, Long> tpacooldown = new HashMap<>();
 	public static HashMap<String, String> reply = new HashMap<>();
 	public static HashMap<String, String> spam = new HashMap<>();

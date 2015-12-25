@@ -117,6 +117,7 @@ public class CommandManager implements Listener, CommandExecutor, TabCompleter {
 		cmds.put(new Extinguish(), "extinguish");
 		cmds.put(new Time(), "time");
 		cmds.put(new Hat(), "hat");
+		cmds.put(new ClearChat(), "clearchat");
 	}
 
 	public boolean onCommand(CommandSender sender, Command c, String lbl, String[] args) {
