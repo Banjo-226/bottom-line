@@ -14,7 +14,7 @@
 # Changing this line will reset config and save this to a new file! #
 # This is the configuration updater.                                #
 #####################################################################
-version: 1.2.2
+version: 1.2.3
 
 # METRICS #
 # This plugin utilises Hidendra's plugin metrics system. Opting out of this service can be done by changing this option
@@ -253,7 +253,7 @@ broadcast-world:
     message: '&6Time: &e%player% &eset the time to %time%!'
   weather:
     enabled: true
-    message: '&6Weather: &e%player% &echanged the weather to the condition %weather%!'
+    message: '&6Weather: &e%player% &echanged the weather condition to: %weather%!'
 
 # INVENTORY #
 # Whether to charge the players for clearing their inventory or not.
@@ -295,7 +295,7 @@ ops-colour: '&c'
 # This requires vault to work.
 format-groups:
   enabled: false
-  #default: '&7%player% &8> &f%message%'
+  #default: '&7%displayname% &8> &f%message%'
 
 # COMMAND SPY #
 # Set the format of command spy and blacklist commands

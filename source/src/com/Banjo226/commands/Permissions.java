@@ -61,6 +61,8 @@ public class Permissions {
 	public static final Permission EXTINGUISH = new Permission("bottomline.extinguish");
 	public static final Permission TIME = new Permission("bottomline.time");
 	public static final Permission HAT = new Permission("bottomline.hat");
+	public static final Permission WHOIS = new Permission("bottomline.whois");
+	public static final Permission WEATHER = new Permission("bottomline.weather");
 
 	// Others-sub permissions [--> toggle for other people]
 	public static final Permission FLY_OTHERS = new Permission("bottomline.fly.others");
@@ -79,7 +81,6 @@ public class Permissions {
 	public static final Permission NICKNAME_OTHERS = new Permission("bottomline.nick.others");
 	public static final Permission CMDSPY_OTHERS = new Permission("bottomline.cmdspy.others");
 	public static final Permission GAMEMODE_OTHERS = new Permission("bottomline.gamemode.others");
-	public static final Permission WHOIS = new Permission("bottomline.whois");
 
 	// Misc sub permissions [--> like chat toggles etc.]
 	public static final Permission ADMINCHAT_TOGGLE = new Permission("bottomline.adminchat.toggle");

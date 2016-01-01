@@ -1,5 +1,5 @@
 name: BottomLine
-version: 1.2.2
+version: 1.2.3
 author: Banjo226
 main: com.Banjo226.BottomLine
 description: Play spigot, your way.
@@ -225,6 +225,10 @@ commands:
     description: Set your helmet to the item in your hand.
     permission: bottomline.hat
     aliases: [sethat, helmet, blhat]
+  weather:
+    description: Manipulate the server's weather.
+    permission: bottomline.weather
+    aliases: [w, weather, changeweather, blweather]
     
 permissions:
   bottomline.*:
@@ -333,6 +337,7 @@ permissions:
       bottomline.extinguish: true
       bottomline.time: true
       bottomline.hat: true
+      bottomline.weather: true
   bottomline.adminchat.*:
     description: All adminchat nodes
     default: op
@@ -750,3 +755,6 @@ permissions:
   bottomline.hat:
     description: Hat perm
     default: true
+  bottomline.weather:
+    description: Weather perm
+    default: op

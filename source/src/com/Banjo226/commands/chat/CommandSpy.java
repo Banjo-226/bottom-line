@@ -1,19 +1,19 @@
 package com.Banjo226.commands.chat;
 
 import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 import com.Banjo226.BottomLine;
+import com.Banjo226.commands.Permissions;
 import com.Banjo226.manager.Cmd;
 import com.Banjo226.util.Store;
 import com.Banjo226.util.Util;
 import com.Banjo226.util.files.Data;
 import com.Banjo226.util.files.PlayerData;
-
-import com.Banjo226.commands.Permissions;
 
 public class CommandSpy extends Cmd {
 	Data d = Data.getInstance();
@@ -98,8 +98,11 @@ public class CommandSpy extends Cmd {
 				}
 			}
 
-			if (Store.cmdspy.contains(admin.getName())) {
-				admin.sendMessage(Util.colour(pl.getConfig().getString("cmdspy.format").replaceAll("%player%", player.getDisplayName()).replaceAll("%command%", cmd)));
+			Command c = Bukkit.getPluginCommand(cmd.replaceAll("/", ""));
+
+			if (c != null) {
+				if (Store.cmdspy.contains(admin.getName()))
+					admin.sendMessage(Util.colour(pl.getConfig().getString("cmdspy.format").replaceAll("%player%", player.getDisplayName()).replaceAll("%command%", cmd)));
 			}
 		}
 	}

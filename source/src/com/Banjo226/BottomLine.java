@@ -42,6 +42,8 @@ import com.Banjo226.commands.player.PowerTool;
 import com.Banjo226.commands.player.gamemode.QuickGM;
 import com.Banjo226.commands.replace.Plugins;
 import com.Banjo226.commands.replace.Version;
+import com.Banjo226.commands.world.time.QuickTime;
+import com.Banjo226.commands.world.weather.QuickWeather;
 import com.Banjo226.events.ConfigListener;
 import com.Banjo226.events.DeathListener;
 import com.Banjo226.events.RespawnListener;
@@ -108,7 +110,8 @@ public class BottomLine extends JavaPlugin implements Listener {
 		file = new File(this.getDataFolder(), "config.yml");
 
 		registerEvents(this, new MOTD(), new JoinLeaveListener(), new AdminChat(), new God(), new AFK(), new ConfigListener(), new WeatherListener(), new Mute(), new Jail(), new NewPlayerListener(), new Plugins(), new Version(), new Freeze(), new BanJoinListener(),
-				new Open(), new Item(), new ClicksPerSecondListener(), new CommandSpy(), new PowerTool(), new DeathListener(), new ChatEventManager(), new FeedSign(), new HealSign(), new RespawnListener(), new QuickGM(), new FormatSigns(), new KitSign());
+				new Open(), new Item(), new ClicksPerSecondListener(), new CommandSpy(), new PowerTool(), new DeathListener(), new ChatEventManager(), new FeedSign(), new HealSign(), new RespawnListener(), new QuickGM(), new FormatSigns(), new KitSign(),
+				new QuickTime(), new QuickWeather());
 		setup();
 
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TicksPerSecond(), 100L, 1L); // updates the tps
@@ -259,7 +262,7 @@ public class BottomLine extends JavaPlugin implements Listener {
 							configFolder.mkdirs();
 						}
 						oldConfig.createNewFile();
-						
+
 						warning("Crearted new configuration file, renamed old file to " + oldConfig.getName());
 					}
 				} catch (IOException e) {

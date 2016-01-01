@@ -6,7 +6,7 @@
  *  Copyright © 2015 Banjo226. All rights reserved.
  */
 
-package com.Banjo226.commands.world;
+package com.Banjo226.commands.world.time;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
