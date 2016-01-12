@@ -17,7 +17,7 @@ public class Home extends Cmd {
 	public void run(CommandSender sender, String[] args) throws Exception {
 		if (!(sender instanceof Player)) throw new ConsoleSenderException(getName());
 
-		PlayerData pd = new PlayerData(sender.getName());
+		PlayerData pd = new PlayerData(((Player) sender).getUniqueId());
 		Player player = (Player) sender;
 
 		if (args.length == 1) {
@@ -36,6 +36,7 @@ public class Home extends Cmd {
 			return;
 		}
 
+		pd.setBackLocation(player.getLocation());
 		player.teleport(pd.getHome());
 		sender.sendMessage("§6Home: §eWelcome home, " + pd.getDisplayName() + "§e!");
 	}

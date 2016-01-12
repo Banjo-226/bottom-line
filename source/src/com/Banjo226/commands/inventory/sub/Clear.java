@@ -63,10 +63,10 @@ public class Clear extends InvCommand {
 				return;
 			}
 
-			PlayerData pd = new PlayerData(target.getName(), false);
+			PlayerData pd = new PlayerData(target.getUniqueId(), false);
 			String name = sender.getName();
 			if (sender instanceof Player) {
-				name = new PlayerData(sender.getName(), false).getDisplayName();
+				name = new PlayerData(((Player) sender).getUniqueId(), false).getDisplayName();
 			}
 
 			sender.sendMessage("§6Clear: §eCleared §6" + pd.getDisplayName() + "§e's inventory");

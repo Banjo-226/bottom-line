@@ -74,12 +74,11 @@ public class Gamemode extends Cmd {
 			return;
 		}
 
-		PlayerData pd = new PlayerData(target.getName());
-		PlayerData ps = new PlayerData(sender.getName(), false);
-
+		PlayerData pd = new PlayerData(target.getUniqueId());
+		
 		String name;
 		try {
-			name = ps.getDisplayName();
+			name = new PlayerData(((Player) sender).getUniqueId()).getDisplayName();
 		} catch (Exception e) {
 			name = sender.getName();
 		}

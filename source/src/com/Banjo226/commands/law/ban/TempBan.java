@@ -56,8 +56,8 @@ public class TempBan extends Cmd {
 		if (target == null) {
 			if (pl.getConfig().getBoolean("law.ban.offlineBan") == true) {
 				OfflinePlayer offline = Bukkit.getOfflinePlayer(args[0]);
-				pd = new PlayerData(offline.getName(), false);
-				if (pd.dataExists(offline.getName())) {
+				pd = new PlayerData(offline.getUniqueId(), false);
+				if (pd.dataExists(pd.file)) {
 					if (!m.matches()) {
 						Util.invalidTimestamp(sender, "TempBan", args[1]);
 						return;
@@ -67,31 +67,31 @@ public class TempBan extends Cmd {
 					if (m.group(1) != null) {
 						// Hour
 						time = (Integer.parseInt(timeValue) * 3600000) + System.currentTimeMillis();
-						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 					} else if (m.group(2) != null) {
 						// Minute
 						time = (Integer.parseInt(timeValue) * 60000) + System.currentTimeMillis();
-						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 					} else if (m.group(3) != null) {
 						// Second
 						time = (Integer.parseInt(timeValue) * 1000) + System.currentTimeMillis();
-						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 					} else if (m.group(4) != null) {
 						// Day
 						time = (Integer.parseInt(timeValue) * 86400000) + System.currentTimeMillis();
-						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 					} else if (m.group(5) != null) {
 						// Week
 						time = (Integer.parseInt(timeValue) * 604800000) + System.currentTimeMillis();
-						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 					} else if (m.group(6) != null) {
 						// Month
 						time = (Integer.parseInt(timeValue) * 2620800000L) + System.currentTimeMillis();
-						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 					} else if (m.group(7) != null) {
 						// Year
 						time = (Integer.parseInt(timeValue) * 31536000000L) + System.currentTimeMillis();
-						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+						pd.setOfflineTempBanned(offline, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 					}
 
 					pd.addHistory(Types.TEMPBAN, msg.trim(), sender.getName(), sdf.format(date), args[1]);
@@ -113,38 +113,38 @@ public class TempBan extends Cmd {
 			return;
 		}
 
-		pd = new PlayerData(target.getName());
+		pd = new PlayerData(target.getUniqueId());
 
 		long time;
 		if (m.matches()) {
 			if (m.group(1) != null) {
 				// Hour
 				time = (Integer.parseInt(timeValue) * 3600000) + System.currentTimeMillis();
-				pd.setTempBanned(target, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+				pd.setTempBanned(target, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 			} else if (m.group(2) != null) {
 				// Minute
 				time = (Integer.parseInt(timeValue) * 60000) + System.currentTimeMillis();
-				pd.setTempBanned(target, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+				pd.setTempBanned(target, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 			} else if (m.group(3) != null) {
 				// Second
 				time = (Integer.parseInt(timeValue) * 1000) + System.currentTimeMillis();
-				pd.setTempBanned(target, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+				pd.setTempBanned(target, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 			} else if (m.group(4) != null) {
 				// Day
 				time = (Integer.parseInt(timeValue) * 86400000) + System.currentTimeMillis();
-				pd.setTempBanned(target, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+				pd.setTempBanned(target, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 			} else if (m.group(5) != null) {
 				// Week
 				time = (Integer.parseInt(timeValue) * 604800000) + System.currentTimeMillis();
-				pd.setTempBanned(target, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+				pd.setTempBanned(target, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 			} else if (m.group(6) != null) {
 				// Month
 				time = (Integer.parseInt(timeValue) * 2620800000L) + System.currentTimeMillis();
-				pd.setTempBanned(target, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+				pd.setTempBanned(target, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 			} else if (m.group(7) != null) {
 				// Year
 				time = (Integer.parseInt(timeValue) * 31536000000L) + System.currentTimeMillis();
-				pd.setTempBanned(target, true, msg, new PlayerData(sender.getName()), System.currentTimeMillis(), time);
+				pd.setTempBanned(target, true, msg, new PlayerData(((Player) sender).getUniqueId()), System.currentTimeMillis(), time);
 			}
 		} else {
 			Util.invalidTimestamp(sender, "TempBan", args[1]);

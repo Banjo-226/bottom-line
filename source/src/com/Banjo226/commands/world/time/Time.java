@@ -72,7 +72,7 @@ public class Time extends Cmd {
 
 		if (pl.getConfig().getBoolean("broadcast-world.time.enabled") == true) {
 			String name = sender.getName();
-			if (sender instanceof Player) name = new PlayerData(sender.getName()).getDisplayName();
+			if (sender instanceof Player) name = new PlayerData(((Player) sender).getUniqueId()).getDisplayName();
 
 			Bukkit.broadcastMessage(Util.colour(pl.getConfig().getString("broadcast-world.time.message").replaceAll("%player%", name).replaceAll("%time%", args[0])));
 		}

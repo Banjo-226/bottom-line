@@ -29,7 +29,7 @@ public class OverClickEvent extends Event {
 		this.clicks = clicks;
 		kicked = pl.getConfig().getBoolean("law.cps.kick");
 		commands = pl.getConfig().getStringList("law.cps.commands");
-		pd = new PlayerData(p.getName(), false);
+		pd = new PlayerData(p.getUniqueId(), false);
 	}
 
 	public Player getPlayer() {
@@ -47,7 +47,7 @@ public class OverClickEvent extends Event {
 	}
 
 	public void runCommands() {
-		PlayerData pd = new PlayerData(p.getName(), false);
+		PlayerData pd = new PlayerData(p.getUniqueId(), false);
 		for (int i = 0; i < commands.size(); i++) {
 			String command = commands.get(i).replaceAll("%player%", pd.getDisplayName()).replaceAll("%byclicks%", String.valueOf(getClickAmount() - pl.getConfig().getInt("law.cps.max-clicks")));
 			Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);

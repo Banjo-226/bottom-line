@@ -59,8 +59,8 @@ public class CommandSpy extends Cmd {
 				return;
 			}
 
-			PlayerData pd = new PlayerData(target.getName());
-			PlayerData ps = new PlayerData(sender.getName());
+			PlayerData pd = new PlayerData(target.getUniqueId());
+			PlayerData ps = new PlayerData(((Player) sender).getUniqueId());
 
 			if (!Store.cmdspy.contains(target.getName())) {
 				Store.cmdspy.add(sender.getName());
@@ -101,8 +101,7 @@ public class CommandSpy extends Cmd {
 			Command c = Bukkit.getPluginCommand(cmd.replaceAll("/", ""));
 
 			if (c != null) {
-				if (Store.cmdspy.contains(admin.getName()))
-					admin.sendMessage(Util.colour(pl.getConfig().getString("cmdspy.format").replaceAll("%player%", player.getDisplayName()).replaceAll("%command%", cmd)));
+				if (Store.cmdspy.contains(admin.getName())) admin.sendMessage(Util.colour(pl.getConfig().getString("cmdspy.format").replaceAll("%player%", player.getDisplayName()).replaceAll("%command%", cmd)));
 			}
 		}
 	}

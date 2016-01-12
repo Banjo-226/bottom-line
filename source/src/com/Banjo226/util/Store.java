@@ -26,6 +26,7 @@ public class Store implements Listener {
 	public static List<String> god = Data.getInstance().getConfig().getStringList("god.toggle");
 	public static List<String> tptoggle = Data.getInstance().getConfig().getStringList("tp.toggle");
 	public static List<String> cmdspy = Data.getInstance().getConfig().getStringList("spy.cmd.toggle");
+	public static List<String> msgtoggle = Data.getInstance().getConfig().getStringList("msg.toggle");
 
 	public static HashMap<String, Long> cooldown = new HashMap<>();
 	public static HashMap<String, Long> tpacooldown = new HashMap<>();
@@ -41,9 +42,6 @@ public class Store implements Listener {
 	public static ArrayList<String> muted = new ArrayList<>();
 	public static ArrayList<String> jailed = new ArrayList<>();
 	public static ArrayList<String> freeze = new ArrayList<>();
-
-//	public static List<String> rules = BottomLine.getInstance().getConfig().getStringList("rules");
-//	public static List<String> motd = BottomLine.getInstance().getConfig().getStringList("motd.message");
 	
 	public static List<String> breakbl = BottomLine.getInstance().getConfig().getStringList("block.blocks");
 	public static List<String> newbiesKit = BottomLine.getInstance().getConfig().getStringList("newbies.kit.items");

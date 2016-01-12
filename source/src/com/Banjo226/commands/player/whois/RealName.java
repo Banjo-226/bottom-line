@@ -33,7 +33,7 @@ public class RealName extends Cmd implements TabCompleter {
 			String realname = "";
 
 			for (Player player : Bukkit.getOnlinePlayers()) {
-				PlayerData pd = new PlayerData(player.getName());
+				PlayerData pd = new PlayerData(player.getUniqueId());
 				String nick = Util.removeColour(pd.getNick()).toLowerCase();
 				if (nick.startsWith(args[0].toLowerCase())) {
 					found = true;
@@ -50,7 +50,7 @@ public class RealName extends Cmd implements TabCompleter {
 			return;
 		}
 
-		PlayerData pd = new PlayerData(target.getName(), false);
+		PlayerData pd = new PlayerData(target.getUniqueId(), false);
 		if (pd.getConfig().contains("nickname")) {
 			sender.sendMessage("§6Realname: §e" + target.getName() + "'s nickname is " + pd.getNick());
 		} else {
@@ -66,7 +66,7 @@ public class RealName extends Cmd implements TabCompleter {
 
 					if (!args[0].equalsIgnoreCase("")) {
 						for (Player player : Bukkit.getOnlinePlayers()) {
-							PlayerData pd = new PlayerData(player.getName());
+							PlayerData pd = new PlayerData(player.getUniqueId());
 							String nick = Util.removeColour(pd.getNick()).toLowerCase();
 							if (nick.startsWith(args[0].toLowerCase())) {
 								players.add(nick);
@@ -74,7 +74,7 @@ public class RealName extends Cmd implements TabCompleter {
 						}
 					} else {
 						for (Player player : Bukkit.getOnlinePlayers()) {
-							PlayerData pd = new PlayerData(player.getName());
+							PlayerData pd = new PlayerData(player.getUniqueId());
 							players.add(Util.removeColour(pd.getNick()).toLowerCase());
 						}
 					}

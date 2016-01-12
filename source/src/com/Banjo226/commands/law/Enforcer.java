@@ -42,7 +42,7 @@ public class Enforcer extends Cmd {
 			return;
 		}
 
-		con = new PlayerData(target.getName());
+		con = new PlayerData(target.getUniqueId());
 		SimpleDateFormat sdf = new SimpleDateFormat("(z) dd/MM/yy hh:mm:ss a");
 		Date date = new Date();
 

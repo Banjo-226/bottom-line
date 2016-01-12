@@ -4,6 +4,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.Banjo226.manager.Cmd;
+import com.Banjo226.util.files.PlayerData;
 import com.Banjo226.util.files.Spawns;
 
 import com.Banjo226.commands.Permissions;
@@ -30,6 +31,9 @@ public class Spawn extends Cmd {
 				sender.sendMessage(e.getMessage());
 			}
 		} else {
+			PlayerData pd = new PlayerData(player.getUniqueId());
+			pd.setBackLocation(player.getLocation());
+			
 			player.teleport(s.getSpawn(spawn));
 			sender.sendMessage("§6Spawn: §eTeleporting...");
 		}

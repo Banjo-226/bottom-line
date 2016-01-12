@@ -74,7 +74,7 @@ public class Weather extends Cmd {
 		
 		if (pl.getConfig().getBoolean("broadcast-world.weather.enabled") == true) {
 			String name = sender.getName();
-			if (sender instanceof Player) name = new PlayerData(sender.getName()).getDisplayName();
+			if (sender instanceof Player) name = new PlayerData(((Player) sender).getUniqueId()).getDisplayName();
 
 			Bukkit.broadcastMessage(Util.colour(pl.getConfig().getString("broadcast-world.weather.message").replaceAll("%player%", name).replaceAll("%weather%", con)));
 		}

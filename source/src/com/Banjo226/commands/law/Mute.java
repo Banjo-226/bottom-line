@@ -139,7 +139,7 @@ public class Mute extends Cmd implements TabCompleter {
 		Date date = new Date();
 
 		if (args.length == 2) {
-			con = new PlayerData(target.getName());
+			con = new PlayerData(target.getUniqueId());
 			con.addHistory(Types.MUTE, "Misconduct", sender.getName(), sdf.format(date), args[1]);
 
 			Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §emuted §c" + con.getDisplayName() + " §efor " + args[1] + "!");
@@ -149,7 +149,7 @@ public class Mute extends Cmd implements TabCompleter {
 				msg = msg + args[i] + " ";
 			}
 
-			con = new PlayerData(target.getName());
+			con = new PlayerData(target.getUniqueId());
 			con.addHistory(Types.MUTE, msg.trim(), sender.getName(), sdf.format(date), args[1]);
 
 			Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §emuted §c" + con.getDisplayName() + " §efor " + args[1] + " because " + msg.trim() + "!");

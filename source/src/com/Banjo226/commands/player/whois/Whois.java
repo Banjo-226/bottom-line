@@ -3,6 +3,7 @@ package com.Banjo226.commands.player.whois;
 import java.text.DecimalFormat;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -22,6 +23,7 @@ public class Whois extends Cmd {
 		super("whois", Permissions.WHOIS);
 	}
 
+	@SuppressWarnings("deprecation")
 	public void run(CommandSender sender, String[] args) throws Exception {
 		DecimalFormat form = new DecimalFormat("#.00");
 		String symbol = pl.getConfig().getString("economy.money-symbol");
@@ -34,8 +36,9 @@ public class Whois extends Cmd {
 		Player target = Bukkit.getPlayer(args[0]);
 		PlayerData pd;
 		if (target == null) {
-			pd = new PlayerData(args[0], false);
-			if (pd.dataExists(args[0])) {
+			OfflinePlayer op = Bukkit.getOfflinePlayer(args[0]);
+			pd = new PlayerData(op.getUniqueId(), false);
+			if (pd.dataExists(pd.file)) {
 				sender.sendMessage("§7§m------§e " + pd.getDisplayName() + "§7 §m------");
 				sender.sendMessage("§8[§c!§8] §eThis is not all of the information about the player!");
 				sender.sendMessage("§e- Real name: §6" + pd.getDefaultName());
@@ -51,7 +54,7 @@ public class Whois extends Cmd {
 			return;
 		}
 
-		pd = new PlayerData(target.getName());
+		pd = new PlayerData(target.getUniqueId());
 		sender.sendMessage("§7§m------§e " + pd.getDisplayName() + "§7 §m------");
 		sender.sendMessage("§e- Real name: §6" + pd.getDefaultName());
 		sender.sendMessage("§e- Current Location: §6" + pd.getWorld().getName() + "§6, " + pd.getX() + "§6, " + pd.getY() + "§6, " + pd.getZ());

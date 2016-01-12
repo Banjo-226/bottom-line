@@ -41,7 +41,7 @@ public class Extinguish extends Cmd {
 			return;
 		}
 		
-		PlayerData pd = new PlayerData(target.getName());
+		PlayerData pd = new PlayerData(target.getUniqueId());
 		
 		if (target.getFireTicks() == 0) {
 			sender.sendMessage("§cExtinguish: §4" + pd.getDisplayName() + "§4 is not on fire!");

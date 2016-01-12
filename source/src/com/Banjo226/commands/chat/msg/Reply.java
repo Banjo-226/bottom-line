@@ -1,4 +1,4 @@
-package com.Banjo226.commands.chat;
+package com.Banjo226.commands.chat.msg;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -34,7 +34,7 @@ public class Reply extends Cmd {
 
 		if (sender instanceof Player) {
 			Util.playSound((Player) sender);
-			name = new PlayerData(sender.getName()).getDisplayName();
+			name = new PlayerData(((Player) sender).getUniqueId()).getDisplayName();
 		} else if (!(sender instanceof Player)) {
 			name = sender.getName();
 		} else {
@@ -47,6 +47,11 @@ public class Reply extends Cmd {
 		if (!Store.reply.containsKey(sender.getName())) {
 			try {
 				if (Store.reply.get(sender.getName()).equals("CONSOLE")) {
+					if (Store.msgtoggle.contains("CONSOLE")) {
+						sender.sendMessage("§cMessage: §4Console has messages disabled!");
+						return;
+					}
+					
 					if (sender.hasPermission(Permissions.MSG_COLOUR)) {
 						send = Util.colour(pl.getConfig().getString("msg.format-sender").replaceAll("%target%", "Console")).replaceAll("%message%", Util.parseColours(msg));
 						player = Util.colour(pl.getConfig().getString("msg.format-target").replaceAll("%sender%", name)).replaceAll("%message%", Util.parseColours(msg));
@@ -80,6 +85,11 @@ public class Reply extends Cmd {
 		if (target == null) {
 			sender.sendMessage("§cReply: §4The player that you last messaged is offline.");
 			Store.reply.remove(sender.getName());
+			return;
+		}
+		
+		if (Store.msgtoggle.contains(target.getName())) {
+			sender.sendMessage("§cMessage: §4" + new PlayerData(target.getUniqueId()).getDisplayName() + " §4has messages disabled!");
 			return;
 		}
 

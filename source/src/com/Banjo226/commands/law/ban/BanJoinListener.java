@@ -19,7 +19,7 @@ public class BanJoinListener implements Listener {
 	public void onPlayerJoin(PlayerLoginEvent e) {
 		Player player = e.getPlayer();
 
-		pd = new PlayerData(player.getName());
+		pd = new PlayerData(player.getUniqueId());
 		if (pd.isBanned() && player.isBanned()) {
 			String message = "";
 			if (e.getResult() == Result.KICK_BANNED) {

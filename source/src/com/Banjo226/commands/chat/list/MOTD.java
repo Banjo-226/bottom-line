@@ -47,7 +47,7 @@ public class MOTD extends Cmd {
 			Player player = (Player) sender;
 
 			w = player.getWorld();
-			name = player.getDisplayName();
+			name = new PlayerData(player.getUniqueId()).getDisplayName();
 			balance = form.format(econ.getBalance(sender));
 		}
 
@@ -70,7 +70,7 @@ public class MOTD extends Cmd {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		final Player sender = e.getPlayer();
-		final PlayerData pd = new PlayerData(sender.getName(), false);
+		final PlayerData pd = new PlayerData(sender.getUniqueId(), false);
 
 		final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss a");
 		final Date date = new Date();

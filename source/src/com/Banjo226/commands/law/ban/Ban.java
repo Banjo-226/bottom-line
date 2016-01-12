@@ -9,12 +9,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.Banjo226.BottomLine;
+import com.Banjo226.commands.Permissions;
+import com.Banjo226.commands.law.history.Types;
 import com.Banjo226.manager.Cmd;
 import com.Banjo226.util.Util;
 import com.Banjo226.util.files.PlayerData;
-
-import com.Banjo226.commands.Permissions;
-import com.Banjo226.commands.law.history.Types;
 
 public class Ban extends Cmd {
 	BottomLine pl = BottomLine.getInstance();
@@ -48,14 +47,14 @@ public class Ban extends Cmd {
 		if (target == null) {
 			if (pl.getConfig().getBoolean("law.ban.offlineBan") == true) {
 				OfflinePlayer offline = Bukkit.getOfflinePlayer(args[0]);
-				con = new PlayerData(offline.getName(), false);
-				if (con.dataExists(offline.getName())) {
+				con = new PlayerData(offline.getUniqueId(), false);
+				if (con.dataExists(con.file)) {
 					if (offline.isOp()) {
 						Util.punishOps(sender, "Ban");
 						return;
 					}
 
-					con.setOfflineBanned(offline, true, msg.trim(), new PlayerData(sender.getName()));
+					con.setOfflineBanned(offline, true, msg.trim(), new PlayerData(((Player) sender).getUniqueId()));
 					con.addHistory(Types.BAN, msg.trim(), sender.getName(), sdf.format(date), null);
 
 					Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §ebanned §c" + con.getDisplayName() + " §efor " + msg.trim() + "!");
@@ -76,8 +75,8 @@ public class Ban extends Cmd {
 			return;
 		}
 
-		con = new PlayerData(target.getName());
-		con.setBanned(target, true, msg.trim(), new PlayerData(sender.getName()));
+		con = new PlayerData(target.getUniqueId());
+		con.setBanned(target, true, msg.trim(), new PlayerData(((Player) sender).getUniqueId()));
 		con.addHistory(Types.BAN, msg.trim(), sender.getName(), sdf.format(date), null);
 
 		Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §ebanned §c" + con.getDisplayName() + " §efor " + msg.trim() + "!");

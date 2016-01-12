@@ -14,7 +14,7 @@
 # Changing this line will reset config and save this to a new file! #
 # This is the configuration updater.                                #
 #####################################################################
-version: 1.2.3
+version: 1.2.4
 
 # METRICS #
 # This plugin utilises Hidendra's plugin metrics system. Opting out of this service can be done by changing this option

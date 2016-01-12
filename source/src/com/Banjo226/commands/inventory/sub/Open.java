@@ -3,12 +3,7 @@ package com.Banjo226.commands.inventory.sub;
 
 import java.util.Arrays;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.DyeColor;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
-import org.bukkit.SkullType;
+import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,11 +16,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.material.Wool;
 
+import com.Banjo226.commands.Permissions;
+import com.Banjo226.commands.exception.ConsoleSenderException;
+import com.Banjo226.commands.inventory.InvCommand;
 import com.Banjo226.util.Util;
 import com.Banjo226.util.files.PlayerData;
-
-import com.Banjo226.commands.Permissions;
-import com.Banjo226.commands.inventory.InvCommand;
 
 public class Open extends InvCommand implements Listener {
 	Player targ = null;
@@ -35,8 +30,10 @@ public class Open extends InvCommand implements Listener {
 		super("open", "Open another players inventory", "[player]", Arrays.asList("openinv", "invopen"), Permissions.OPENINV);
 	}
 
-	public void run(CommandSender sender, String[] args) {
-		pd = new PlayerData(sender.getName());
+	public void run(CommandSender sender, String[] args) throws Exception {
+		if (!(sender instanceof Player)) throw new ConsoleSenderException(getName());
+
+		pd = new PlayerData(((Player) sender).getUniqueId());
 
 		if (args.length == 0) {
 			Util.invalidArgCount(sender, "Open Inventory", "Open the inventory of another individual.", "/inv open [player]");
@@ -45,13 +42,9 @@ public class Open extends InvCommand implements Listener {
 			if (target == null) {
 				Util.offline(sender, "Open Inventory", args[0]);
 			} else {
-				if (!(sender instanceof Player)) {
-					sender.sendMessage("Console cannot open inventories!");
-				} else {
-					Player player = (Player) sender;
-					openInventory(player, target);
-					pd.set("invopentarget", target.getName());
-				}
+				Player player = (Player) sender;
+				openInventory(player, target);
+				pd.set("invopentarget", target.getName());
 			}
 		}
 	}
@@ -97,11 +90,11 @@ public class Open extends InvCommand implements Listener {
 			ItemMeta tsmeta = ts.getItemMeta();
 			tsmeta.setDisplayName("§6Set gamemode to survival");
 			ts.setItemMeta(tsmeta);
-			
+
 			inv.setItem(40, ts);
 			inv.setItem(41, tc);
 		}
-		
+
 		inv.setItem(42, health);
 		inv.setItem(43, food);
 		inv.setItem(44, gm);
@@ -112,7 +105,7 @@ public class Open extends InvCommand implements Listener {
 	@EventHandler
 	public void onClickEvent(InventoryClickEvent e) {
 		Player player = (Player) e.getWhoClicked();
-		pd = new PlayerData(player.getName(), false);
+		pd = new PlayerData(player.getUniqueId(), false);
 
 		if (!ChatColor.stripColor(e.getInventory().getName()).equalsIgnoreCase("Player Inventory")) return;
 		if (!e.getWhoClicked().hasPermission(Permissions.OPENINV_MODIFY)) e.setCancelled(true);

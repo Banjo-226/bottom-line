@@ -43,9 +43,13 @@ public class Reload extends CoreCommand {
 			sender.sendMessage("§6Core: §eSuccessfully reloaded the configuration files on the server. Took §6" + now + " milliseconds.");
 			sender.sendMessage("§eFiles include; §6" + pl.file.getName() + "§e, §6" + d.getName() + "§e, §6" + j.getName() + "§e, §6" + e.getName() + "§e, §6" + s.getName());
 
-			PlayerData pd = new PlayerData(sender.getName(), false);
+			String name = "Console";
+			if (sender instanceof Player) {
+				name = new PlayerData(((Player) sender).getUniqueId()).getDisplayName();
+			}
+			
 			for (Player player : Bukkit.getOnlinePlayers()) {
-				if (!player.getName().equalsIgnoreCase(sender.getName())) if (player.hasPermission(Permissions.RELOADCONFIG)) player.sendMessage("§8§o[§6§oCore: §e§oConfiguration files successfully reloaded by " + Util.colour(pd.getDisplayName()) + "§8§o]");
+				if (!player.getName().equalsIgnoreCase(sender.getName())) if (player.hasPermission(Permissions.RELOADCONFIG)) player.sendMessage("§8§o[§6§oCore: §e§oConfiguration files successfully reloaded by " + Util.colour(name) + "§8§o]");
 			}
 
 			BottomLine.debug("Reloaded configuration file by " + sender.getName() + " in " + now + " ms");

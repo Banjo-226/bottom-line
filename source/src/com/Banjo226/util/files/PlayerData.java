@@ -32,7 +32,6 @@ import com.Banjo226.commands.law.history.Types;
 public class PlayerData {
 
 	UUID uuid;
-	String name;
 	public File file;
 	public static File datafolder;
 	FileConfiguration conf;
@@ -45,19 +44,19 @@ public class PlayerData {
 	public List<String> freezes;
 	public int historySize;
 
-	public PlayerData(String name) {
+	public PlayerData(UUID name) {
 		this(name, true);
 	}
 
-	public PlayerData(String name, boolean create) {
-		this.name = name;
+	public PlayerData(UUID uuid, boolean create) {
+		this.uuid = uuid;
 
 		datafolder = new File(BottomLine.getInstance().getDataFolder() + File.separator + "userdata");
 		if (!datafolder.exists()) {
 			datafolder.mkdirs();
 		}
 
-		file = new File(datafolder.getPath() + File.separator + name + ".yml");
+		file = new File(datafolder.getPath() + File.separator + uuid.toString() + ".yml");
 		if (!dataExists(file) && create == true) {
 			createData();
 		}
@@ -81,8 +80,8 @@ public class PlayerData {
 		}
 	}
 
-	public boolean dataExists(String name) {
-		File file = new File(datafolder.getPath() + File.separator + name + ".yml");
+	public boolean dataExists(UUID uuid) {
+		File file = new File(datafolder.getPath() + File.separator + uuid.toString() + ".yml");
 		return dataExists(file);
 	}
 
@@ -127,6 +126,17 @@ public class PlayerData {
 		conf.set("location.yaw", form.format(loc.getYaw()));
 		conf.set("location.pitch", form.format(loc.getPitch()));
 		conf.set("location.world", loc.getWorld().getName());
+
+		saveConfig();
+	}
+	
+	public void setBackLocation(Location loc) {
+		conf.set("location.back.x", form.format(loc.getX()));
+		conf.set("location.back.y", form.format(loc.getY()));
+		conf.set("location.back.z", form.format(loc.getZ()));
+		conf.set("location.back.yaw", form.format(loc.getYaw()));
+		conf.set("location.back.pitch", form.format(loc.getPitch()));
+		conf.set("location.back.world", loc.getWorld().getName());
 
 		saveConfig();
 	}
@@ -331,7 +341,18 @@ public class PlayerData {
 	}
 
 	public Location getLocation() {
-		return new Location(getWorld(), Double.parseDouble(getX()), Double.parseDouble(getX()), Double.parseDouble(getX()), Float.parseFloat(getYaw()), Float.parseFloat(getYaw()));
+		return new Location(getWorld(), Double.parseDouble(getX()), Double.parseDouble(getY()), Double.parseDouble(getZ()), Float.parseFloat(getYaw()), Float.parseFloat(getYaw()));
+	}
+	
+	public Location getBackLocation() {
+		World world = Bukkit.getWorld(conf.getString("location.back.world"));
+		String x = conf.getString("location.back.x");
+		String y = conf.getString("location.back.y");
+		String z = conf.getString("location.back.z");
+		String yaw = conf.getString("location.back.yaw");
+		String pitch = conf.getString("location.back.pitch");
+		
+		return new Location(world, Double.parseDouble(x), Double.parseDouble(y), Double.parseDouble(z), Float.parseFloat(yaw), Float.parseFloat(pitch));
 	}
 
 	public String getLastTimeConnected() {

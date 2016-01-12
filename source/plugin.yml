@@ -1,5 +1,5 @@
 name: BottomLine
-version: 1.2.3
+version: 1.2.4
 author: Banjo226
 main: com.Banjo226.BottomLine
 description: Play spigot, your way.
@@ -229,6 +229,14 @@ commands:
     description: Manipulate the server's weather.
     permission: bottomline.weather
     aliases: [w, weather, changeweather, blweather]
+  msgtoggle:
+    description: Change the status of whether people can message you or not.
+    permission: bottomline.msgtoggle
+    aliases: [mtoggle, togglemsgs, blmsgtoggle]
+  back:
+    description: Go back to your previous location.
+    permission: bottomline.back
+    aliases: [previousloc, backloc, blback]
     
 permissions:
   bottomline.*:
@@ -338,6 +346,8 @@ permissions:
       bottomline.time: true
       bottomline.hat: true
       bottomline.weather: true
+      bottomline.msgtoggle: true
+      bottomline.back: true
   bottomline.adminchat.*:
     description: All adminchat nodes
     default: op
@@ -758,3 +768,9 @@ permissions:
   bottomline.weather:
     description: Weather perm
     default: op
+  bottomline.msgtoggle:
+    description: Msgtoggle perm
+    default: op
+  bottomline.back:
+    description: Back perm
+    default: true

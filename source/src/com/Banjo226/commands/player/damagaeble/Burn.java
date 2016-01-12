@@ -41,7 +41,7 @@ public class Burn extends Cmd {
 			return;
 		}
 		
-		PlayerData pd = new PlayerData(target.getName());
+		PlayerData pd = new PlayerData(target.getUniqueId());
 		
 		target.setFireTicks(500);
 		target.sendMessage("§6Burn: §eYou've been set on fire! Go quick, find some water!");

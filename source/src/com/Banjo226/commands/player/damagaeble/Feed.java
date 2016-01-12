@@ -40,7 +40,7 @@ public class Feed extends Cmd {
 			if (!(sender instanceof Player)) {
 				name = "Console";
 			} else {
-				PlayerData pl = new PlayerData(sender.getName());
+				PlayerData pl = new PlayerData(((Player) sender).getUniqueId());
 
 				if (pl.getDisplayName() == null) {
 					name = sender.getName();

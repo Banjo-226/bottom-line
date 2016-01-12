@@ -24,7 +24,7 @@ public class ConfigListener implements Listener {
 	public void onPlayerChat(AsyncPlayerChatEvent e) {
 		Player player = e.getPlayer();
 
-		pl = new PlayerData(player.getName());
+		pl = new PlayerData(player.getUniqueId());
 		String name;
 
 		try {
@@ -54,7 +54,7 @@ public class ConfigListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player player = e.getPlayer();
 
-		pl = new PlayerData(player.getName());
+		pl = new PlayerData(player.getUniqueId());
 		pl.setIPAddress(player);
 		pl.setUUID(player.getUniqueId());
 		pl.setOpStatus(player.isOp());
@@ -95,8 +95,12 @@ public class ConfigListener implements Listener {
 		Player player = e.getPlayer();
 
 		if (!Store.jailed.contains(player.getName())) {
-			pl = new PlayerData(player.getName());
+			pl = new PlayerData(player.getUniqueId());
 			pl.setLocation(player.getLocation());
+			
+			if (e.getFrom().distance(e.getTo()) > 10) {
+				pl.setBackLocation(e.getFrom());
+			}
 		}
 	}
 
@@ -106,7 +110,7 @@ public class ConfigListener implements Listener {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy hh:mm:ss a z");
 
-		pl = new PlayerData(player.getName());
+		pl = new PlayerData(player.getUniqueId());
 		pl.setLastTimeConnected(sdf);
 	}
 }

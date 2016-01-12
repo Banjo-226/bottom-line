@@ -1,4 +1,4 @@
-package com.Banjo226.commands.chat;
+package com.Banjo226.commands.chat.msg;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -30,6 +30,11 @@ public class Message extends Cmd {
 			Util.offline(sender, "Message", args[0]);
 			return;
 		}
+		
+		if (Store.msgtoggle.contains(target.getName())) {
+			sender.sendMessage("§cMessage: §4" + new PlayerData(target.getUniqueId()).getDisplayName() + " §4has messages disabled!");
+			return;
+		}
 
 		String msg = "";
 		for (int i = 1; i < args.length; i++) {
@@ -40,7 +45,7 @@ public class Message extends Cmd {
 
 		if (sender instanceof Player) {
 			Util.playSound((Player) sender);
-			name = new PlayerData(sender.getName(), false).getDisplayName();
+			name = new PlayerData(((Player) sender).getUniqueId(), false).getDisplayName();
 		} else if (!(sender instanceof Player)) {
 			name = sender.getName();
 		} else {

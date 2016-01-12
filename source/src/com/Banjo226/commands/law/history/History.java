@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -19,6 +20,7 @@ public class History extends Cmd {
 		super("history", Permissions.HISTORY);
 	}
 
+	@SuppressWarnings("deprecation")
 	public void run(CommandSender sender, String[] args) {
 		if (args.length == 0) {
 			Util.invalidArgCount(sender, "History", "Check the history of a player, Eg: their mutes.", "/history [player]", "/history clear [player]", "/history add [player] [mute|jail|ban|freeze|kick] <reason>");
@@ -28,9 +30,10 @@ public class History extends Cmd {
 		if (args.length == 2 && args[0].equalsIgnoreCase("clear")) {
 			Player target = Bukkit.getPlayer(args[1]);
 			if (target == null) {
-				pl = new PlayerData(args[1], false);
+				OfflinePlayer op = Bukkit.getOfflinePlayer(args[1]);
+				pl = new PlayerData(op.getUniqueId(), false);
 
-				if (!pl.dataExists(args[1])) {
+				if (!pl.dataExists(pl.file)) {
 					Util.offline(sender, "History", args[1]);
 					return;
 				}
@@ -45,7 +48,7 @@ public class History extends Cmd {
 				return;
 			}
 
-			pl = new PlayerData(target.getName());
+			pl = new PlayerData(target.getUniqueId());
 
 			if (pl.historySize == 0) {
 				sender.sendMessage("§cHistory: §4" + pl.getDisplayName() + " §4has no valid history to clear!");
@@ -71,9 +74,10 @@ public class History extends Cmd {
 
 			Player target = Bukkit.getPlayer(args[1]);
 			if (target == null) {
-				PlayerData pd = new PlayerData(args[1], false);
+				OfflinePlayer op = Bukkit.getOfflinePlayer(args[1]);
+				PlayerData pd = new PlayerData(op.getUniqueId(), false);
 
-				if (!pd.dataExists(args[1])) {
+				if (!pd.dataExists(pd.file)) {
 					Util.offline(sender, "History", args[1]);
 					return;
 				}
@@ -97,7 +101,7 @@ public class History extends Cmd {
 				sender.sendMessage("§6History: §eAdded history entry.");
 			}
 
-			PlayerData pd = new PlayerData(target.getName(), false);
+			PlayerData pd = new PlayerData(target.getUniqueId(), false);
 
 			boolean type = false;
 			Types ts = null;
@@ -123,9 +127,10 @@ public class History extends Cmd {
 
 		Player target = Bukkit.getPlayer(args[0]);
 		if (target == null) {
-			pl = new PlayerData(args[0], false);
+			OfflinePlayer op = Bukkit.getOfflinePlayer(args[0]);
+			pl = new PlayerData(op.getUniqueId(), false);
 
-			if (!pl.dataExists(args[0])) {
+			if (!pl.dataExists(pl.file)) {
 				Util.offline(sender, "History", args[0]);
 				return;
 			}
@@ -178,7 +183,7 @@ public class History extends Cmd {
 			return;
 		}
 
-		pl = new PlayerData(target.getName());
+		pl = new PlayerData(target.getUniqueId());
 
 		if (pl.historySize == 0) {
 			sender.sendMessage("§cHistory: §4" + pl.getDisplayName() + " §4has no valid history!");

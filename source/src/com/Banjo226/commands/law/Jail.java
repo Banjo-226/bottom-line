@@ -57,7 +57,7 @@ public class Jail extends Cmd implements TabCompleter {
 				Util.offline(sender, "Jail", args[1]);
 				return;
 			}
-			pd = new PlayerData(target.getName());
+			pd = new PlayerData(target.getUniqueId());
 
 			if (!(Store.muted.contains(target.getName()))) {
 				sender.sendMessage("§cJail: §4The chosen player §o(" + target.getName() + ") §4is not jailed!");
@@ -167,7 +167,7 @@ public class Jail extends Cmd implements TabCompleter {
 		Date date = new Date();
 
 		if (args.length == 3) {
-			pd = new PlayerData(target.getName());
+			pd = new PlayerData(target.getUniqueId());
 			pd.addHistory(Types.JAIL, "Misconduct", sender.getName(), sdf.format(date), args[1]);
 
 			Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §ejailed §c" + pd.getDisplayName() + " §efor " + args[1] + "!");
@@ -177,7 +177,7 @@ public class Jail extends Cmd implements TabCompleter {
 				msg = msg + args[i] + " ";
 			}
 
-			pd = new PlayerData(target.getName());
+			pd = new PlayerData(target.getUniqueId());
 			pd.addHistory(Types.JAIL, msg.trim(), sender.getName(), sdf.format(date), args[1]);
 
 			Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §ejailed §c" + pd.getDisplayName() + " §efor " + args[1] + " because " + msg.trim() + "!");

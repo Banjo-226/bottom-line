@@ -68,7 +68,7 @@ public class SearchItem extends InvCommand {
 								str.append("§6, ");
 							}
 
-							PlayerData pd = new PlayerData(player.getName(), false);
+							PlayerData pd = new PlayerData(player.getUniqueId(), false);
 							str.append("§e" + pd.getDisplayName());
 						}
 					}
@@ -104,7 +104,7 @@ public class SearchItem extends InvCommand {
 								str.append("§6, ");
 							}
 
-							PlayerData pd = new PlayerData(player.getName(), false);
+							PlayerData pd = new PlayerData(player.getUniqueId(), false);
 							str.append("§e" + pd.getDisplayName());
 						}
 					}

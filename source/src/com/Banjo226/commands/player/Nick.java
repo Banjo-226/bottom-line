@@ -37,8 +37,8 @@ public class Nick extends Cmd {
 				return;
 			}
 
-			PlayerData ps = new PlayerData(sender.getName());
-			PlayerData pd = new PlayerData(target.getName());
+			PlayerData ps = new PlayerData(((Player) sender).getUniqueId());
+			PlayerData pd = new PlayerData(target.getUniqueId());
 			if (args[0].equalsIgnoreCase("off")) {
 				sender.sendMessage("§6Nickname: §eRemoved your nickname.");
 				pd.setNick(null);
@@ -71,7 +71,7 @@ public class Nick extends Cmd {
 			return;
 		}
 
-		PlayerData pd = new PlayerData(sender.getName());
+		PlayerData pd = new PlayerData(((Player) sender).getUniqueId());
 		Player player = (Player) sender;
 		if (args[0].equalsIgnoreCase("off")) {
 			sender.sendMessage("§6Nickname: §eRemoved your nickname.");

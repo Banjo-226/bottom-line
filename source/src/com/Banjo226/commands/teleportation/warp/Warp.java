@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 
 import com.Banjo226.manager.Cmd;
 import com.Banjo226.util.Util;
+import com.Banjo226.util.files.PlayerData;
 import com.Banjo226.util.files.Warps;
 
 import com.Banjo226.commands.Permissions;
@@ -48,6 +49,8 @@ public class Warp extends Cmd implements TabCompleter {
 		}
 
 		Player player = (Player) sender;
+		PlayerData pd = new PlayerData(player.getUniqueId());
+		pd.setBackLocation(player.getLocation());
 		player.teleport(w.getWarp(args[0]));
 		Util.playSound(player);
 

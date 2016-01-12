@@ -28,8 +28,8 @@ public class Unban extends Cmd {
 		}
 
 		OfflinePlayer offline = Bukkit.getOfflinePlayer(args[0]);
-		con = new PlayerData(offline.getName(), false);
-		if (con.dataExists(offline.getName())) {
+		con = new PlayerData(offline.getUniqueId(), false);
+		if (con.dataExists(con.file)) {
 			if (con.isBanned() || offline.isBanned()) {
 				con.setOfflineBanned(offline, false, null, null);
 

@@ -25,7 +25,10 @@ public class Strike extends Cmd {
 
 	@SuppressWarnings("deprecation")
 	public void run(CommandSender sender, String[] args) {
-		PlayerData pd = new PlayerData(sender.getName(), false);
+		String name = "Console";
+		if (sender instanceof Player) {
+			name = new PlayerData(((Player) sender).getUniqueId()).getDisplayName();
+		}
 
 		if (args.length == 0) {
 			if (!(sender instanceof Player)) {
@@ -49,7 +52,7 @@ public class Strike extends Cmd {
 			return;
 		}
 
-		PlayerData td = new PlayerData(target.getName(), false);
+		PlayerData td = new PlayerData(target.getUniqueId(), false);
 
 		if (pl.getConfig().getBoolean("strike.strike-ops") == false) {
 			if (target.isOp()) {
@@ -59,7 +62,7 @@ public class Strike extends Cmd {
 		}
 
 		if (pl.getConfig().getBoolean("strike.warn-player") == true) {
-			target.sendMessage("§cStrike: §4" + pd.getDisplayName() + " §4has striked you!");
+			target.sendMessage("§cStrike: §4" + name + " §4has striked you!");
 		}
 		sender.sendMessage("§cStrike: §4Successfully striked " + td.getDisplayName());
 

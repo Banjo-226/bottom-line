@@ -11,6 +11,7 @@ import com.Banjo226.commands.Permissions;
 import com.Banjo226.commands.exception.ConsoleSenderException;
 import com.Banjo226.manager.Cmd;
 import com.Banjo226.util.Util;
+import com.Banjo226.util.files.PlayerData;
 
 public class ForceTp extends Cmd {
 
@@ -59,6 +60,8 @@ public class ForceTp extends Cmd {
 
 			loc = new Location(w, x, (y + 1), z, yaw, pitch);
 
+			PlayerData pd = new PlayerData(player.getUniqueId());
+			pd.setBackLocation(player.getLocation());
 			player.teleport(loc);
 			sender.sendMessage("§6Force Teleport: §eTeleporting to location...");
 
@@ -107,6 +110,9 @@ public class ForceTp extends Cmd {
 			}
 
 			loc = new Location(w, x, (y + 1), z, yaw, pitch);
+			
+			PlayerData p1 = new PlayerData(t1.getUniqueId());
+			p1.setBackLocation(t1.getLocation());
 
 			t1.teleport(loc);
 			sender.sendMessage("§6Force Teleport: §eTeleporting " + t1.getDisplayName() + " §eto " + t2.getDisplayName() + "§e's location...");

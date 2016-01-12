@@ -211,8 +211,7 @@ public class BottomLine extends JavaPlugin implements Listener {
 		CommandManager cmd = new CommandManager();
 
 		/*
-		 * Yay! New for loop that loops through every command registered. This sets the executor first to the command manager, then sets the
-		 * permission message.
+		 * A loop that loops through everything in the plugin.yml file, if its a command, we'll register it.
 		 */
 		for (Entry<String, Map<String, Object>> entry : pdf.getCommands().entrySet()) {
 			String command = entry.getKey();
@@ -224,7 +223,7 @@ public class BottomLine extends JavaPlugin implements Listener {
 		/*
 		 * Checks if the commands have been registered for the law systems
 		 */
-		if (Bukkit.getServer().getPluginManager().getPlugin("LiteBans") != null) {
+		if (Bukkit.getPluginManager().getPlugin("LiteBans") != null) {
 			String[] punishments = { "ban", "unban", "tempban", "kick" };
 
 			for (String s : punishments) {

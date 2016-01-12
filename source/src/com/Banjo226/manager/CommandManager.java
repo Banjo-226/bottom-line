@@ -18,9 +18,14 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
-import com.Banjo226.commands.chat.*;
+import com.Banjo226.commands.chat.AdminChat;
+import com.Banjo226.commands.chat.Broadcast;
+import com.Banjo226.commands.chat.CommandSpy;
 import com.Banjo226.commands.chat.list.MOTD;
 import com.Banjo226.commands.chat.list.Rules;
+import com.Banjo226.commands.chat.msg.Message;
+import com.Banjo226.commands.chat.msg.MsgToggle;
+import com.Banjo226.commands.chat.msg.Reply;
 import com.Banjo226.commands.economy.Balance;
 import com.Banjo226.commands.economy.Eco;
 import com.Banjo226.commands.economy.Pay;
@@ -119,6 +124,7 @@ public class CommandManager implements Listener, CommandExecutor, TabCompleter {
 		cmds.put(new Time(), "time");
 		cmds.put(new Hat(), "hat");
 		cmds.put(new Weather(), "weather");
+		cmds.put(new MsgToggle(), "msgtoggle");
 	}
 
 	public boolean onCommand(CommandSender sender, Command c, String lbl, String[] args) {

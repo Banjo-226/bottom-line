@@ -14,7 +14,7 @@ public class ManipulateChatListener extends BottomLineChat {
 
 	@EventHandler
 	public void onPlayerChat(AsyncPlayerChatEvent e) {
-		PlayerData pd = new PlayerData(e.getPlayer().getName());
+		PlayerData pd = new PlayerData(e.getPlayer().getUniqueId());
 		Player player = e.getPlayer();
 
 		String message = e.getMessage();

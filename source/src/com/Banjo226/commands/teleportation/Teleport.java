@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import com.Banjo226.manager.Cmd;
 import com.Banjo226.util.Store;
 import com.Banjo226.util.Util;
-
+import com.Banjo226.util.files.PlayerData;
 import com.Banjo226.commands.Permissions;
 import com.Banjo226.commands.exception.ConsoleSenderException;
 
@@ -66,6 +66,8 @@ public class Teleport extends Cmd {
 
 			loc = new Location(w, x, (y + 1), z, yaw, pitch);
 
+			PlayerData pd = new PlayerData(player.getUniqueId());
+			pd.setBackLocation(player.getLocation());
 			player.teleport(loc);
 			sender.sendMessage("§6Teleport: §eTeleporting to location...");
 

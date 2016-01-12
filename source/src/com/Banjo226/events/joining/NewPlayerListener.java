@@ -23,9 +23,9 @@ public class NewPlayerListener implements Listener {
 	public void onPlayerJoin(final PlayerJoinEvent e) {
 		final Player player = e.getPlayer();
 
-		con = new PlayerData(player.getName(), false);
+		con = new PlayerData(player.getUniqueId(), false);
 
-		if (!con.dataExists(player.getName()) || !player.hasPlayedBefore()) {
+		if (!con.dataExists(player.getUniqueId()) || !player.hasPlayedBefore()) {
 			con.createData();
 
 			Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(pl, new Runnable() {

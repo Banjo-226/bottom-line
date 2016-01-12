@@ -26,7 +26,7 @@ public class List extends Cmd {
 					players.append("§6No players online at the moment.");
 				}
 
-				PlayerData pd = new PlayerData(player.getName());
+				PlayerData pd = new PlayerData(player.getUniqueId());
 
 				if (players.length() > 0) {
 					players.append("§e, ");
@@ -53,7 +53,7 @@ public class List extends Cmd {
 
 						header.append("§6" + i + "§e: ");
 						for (Player player : Bukkit.getOnlinePlayers()) {
-							pd = new PlayerData(player.getName());
+							pd = new PlayerData(player.getUniqueId());
 
 							if (i.equalsIgnoreCase(pl.getPerms().getPrimaryGroup(player))) {
 								if (data > 0) {
@@ -83,7 +83,7 @@ public class List extends Cmd {
 							players.append("§6No players online at the moment.");
 						}
 
-						pd = new PlayerData(player.getName());
+						pd = new PlayerData(player.getUniqueId());
 
 						if (players.length() > 0) {
 							players.append("§e, ");
@@ -106,7 +106,7 @@ public class List extends Cmd {
 					players.append("§6No players online at the moment.");
 				}
 
-				pd = new PlayerData(player.getName());
+				pd = new PlayerData(player.getUniqueId());
 
 				if (players.length() > 0) {
 					players.append("§e, ");

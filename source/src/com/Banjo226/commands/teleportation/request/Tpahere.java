@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import com.Banjo226.manager.Cmd;
 import com.Banjo226.util.Store;
 import com.Banjo226.util.Util;
-
+import com.Banjo226.util.files.PlayerData;
 import com.Banjo226.commands.Permissions;
 import com.Banjo226.commands.exception.ConsoleSenderException;
 
@@ -66,6 +66,8 @@ public class Tpahere extends Cmd {
 					}
 				}
 
+				PlayerData pd = new PlayerData(target.getUniqueId());
+				pd.setBackLocation(target.getLocation());
 				target.teleport(loc);
 				player.sendMessage("§6TPAHERE: §eRequest accepted");
 				target.sendMessage("§6TPAHERE: §eTeleporting to location...");

@@ -63,6 +63,8 @@ public class Permissions {
 	public static final Permission HAT = new Permission("bottomline.hat");
 	public static final Permission WHOIS = new Permission("bottomline.whois");
 	public static final Permission WEATHER = new Permission("bottomline.weather");
+	public static final Permission MSGTOGGLE = new Permission("bottomline.msgtoggle");
+	public static final Permission BACK = new Permission("bottomline.back");
 
 	// Others-sub permissions [--> toggle for other people]
 	public static final Permission FLY_OTHERS = new Permission("bottomline.fly.others");

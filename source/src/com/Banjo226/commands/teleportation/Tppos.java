@@ -6,10 +6,10 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import com.Banjo226.commands.Permissions;
 import com.Banjo226.manager.Cmd;
 import com.Banjo226.util.Util;
-
-import com.Banjo226.commands.Permissions;
+import com.Banjo226.util.files.PlayerData;
 
 public class Tppos extends Cmd {
 
@@ -44,6 +44,8 @@ public class Tppos extends Cmd {
 			}
 
 			Player player = (Player) sender;
+			PlayerData pd = new PlayerData(player.getUniqueId());
+			pd.setBackLocation(player.getLocation());
 
 			World w = player.getWorld();
 			Location loc = new Location(w, x, y, z);
@@ -60,6 +62,9 @@ public class Tppos extends Cmd {
 				Util.offline(sender, "TPPOS", args[3]);
 				return;
 			}
+			
+			PlayerData pd = new PlayerData(target.getUniqueId());
+			pd.setBackLocation(target.getLocation());
 
 			World w = target.getWorld();
 			Location loc = new Location(w, x, y, z);

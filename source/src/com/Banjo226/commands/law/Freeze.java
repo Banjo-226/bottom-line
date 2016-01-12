@@ -133,7 +133,7 @@ public class Freeze extends Cmd {
 		Date date = new Date();
 
 		if (args.length == 2) {
-			con = new PlayerData(target.getName());
+			con = new PlayerData(target.getUniqueId());
 			con.addHistory(Types.FREEZE, "Misconduct", sender.getName(), sdf.format(date), args[1]);
 
 			Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §efroze §c" + con.getDisplayName() + " §efor " + args[1] + "!");
@@ -143,7 +143,7 @@ public class Freeze extends Cmd {
 				msg = msg + args[i] + " ";
 			}
 
-			con = new PlayerData(target.getName());
+			con = new PlayerData(target.getUniqueId());
 			con.addHistory(Types.FREEZE, msg.trim(), sender.getName(), sdf.format(date), args[1]);
 
 			Bukkit.broadcastMessage(prefix + "§ePlayer §c" + sender.getName() + " §efroze §c" + con.getDisplayName() + " §efor " + args[1] + " because " + msg.trim() + "!");
