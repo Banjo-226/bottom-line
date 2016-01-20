@@ -116,11 +116,7 @@ public class Version implements Listener {
 		}
 
 		if (!pdf.getAuthors().isEmpty()) {
-			if (pdf.getAuthors().size() == 1) {
-				sender.sendMessage("§7Author: " + getAuthors(pdf));
-			} else {
-				sender.sendMessage("§7Authors: " + getAuthors(pdf));
-			}
+			sender.sendMessage((pdf.getAuthors().size() == 1) ? "§7Author: " : "§7Authors" + getAuthors(pdf));
 		}
 	}
 
