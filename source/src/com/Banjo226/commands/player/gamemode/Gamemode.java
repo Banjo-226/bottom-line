@@ -41,6 +41,14 @@ public class Gamemode extends Cmd {
 					sender.sendMessage(PermissionMessages.SURVIVAL.toString());
 					return;
 				}
+			} else if (args[0].startsWith("0")) {
+				if (isAuthorised(sender, Permissions.SURVIVAL)) {
+					player.setGameMode(GameMode.SURVIVAL);
+					sender.sendMessage("§6Gamemode: §eSet gamemode to survival!");
+				} else {
+					sender.sendMessage(PermissionMessages.SURVIVAL.toString());
+					return;
+				}
 			} else if (args[0].startsWith("c")) {
 				if (isAuthorised(sender, Permissions.CREATIVE)) {
 					player.setGameMode(GameMode.CREATIVE);
@@ -49,7 +57,23 @@ public class Gamemode extends Cmd {
 					sender.sendMessage(PermissionMessages.CREATIVE.toString());
 					return;
 				}
+			}else if (args[0].startsWith("1")) {
+				if (isAuthorised(sender, Permissions.CREATIVE)) {
+					player.setGameMode(GameMode.CREATIVE);
+					sender.sendMessage("§6Gamemode: §eSet gamemode to creative!");
+				} else {
+					sender.sendMessage(PermissionMessages.CREATIVE.toString());
+					return;
+				}
 			} else if (args[0].startsWith("a")) {
+				if (isAuthorised(sender, Permissions.ADVENTURE)) {
+					player.setGameMode(GameMode.ADVENTURE);
+					sender.sendMessage("§6Gamemode: §eSet gamemode to adventure!");
+				} else {
+					sender.sendMessage(PermissionMessages.ADVENTURE.toString());
+					return;
+				}
+			} else if (args[0].startsWith("3")) {
 				if (isAuthorised(sender, Permissions.ADVENTURE)) {
 					player.setGameMode(GameMode.ADVENTURE);
 					sender.sendMessage("§6Gamemode: §eSet gamemode to adventure!");
@@ -88,11 +112,23 @@ public class Gamemode extends Cmd {
 				target.setGameMode(GameMode.SURVIVAL);
 				sender.sendMessage("§6Gamemode: §eSet " + pd.getDisplayName() + "§e's gamemode to survival!");
 				target.sendMessage("§6Gamemode: §e" + name + "§e set your gamemode to survival!");
+			} else if (args[0].startsWith("0")) {
+				target.setGameMode(GameMode.SURVIVAL);
+				sender.sendMessage("§6Gamemode: §eSet " + pd.getDisplayName() + "§e's gamemode to survival!");
+				target.sendMessage("§6Gamemode: §e" + name + "§e set your gamemode to survival!");
 			} else if (args[0].startsWith("c")) {
 				target.setGameMode(GameMode.CREATIVE);
 				sender.sendMessage("§6Gamemode: §eSet " + pd.getDisplayName() + "§e's gamemode to creative!");
 				target.sendMessage("§6Gamemode: §e" + name + "§e set your gamemode to creative!");
+			} else if (args[0].startsWith("1")) {
+				target.setGameMode(GameMode.CREATIVE);
+				sender.sendMessage("§6Gamemode: §eSet " + pd.getDisplayName() + "§e's gamemode to creative!");
+				target.sendMessage("§6Gamemode: §e" + name + "§e set your gamemode to creative!");
 			} else if (args[0].startsWith("a")) {
+				target.setGameMode(GameMode.ADVENTURE);
+				sender.sendMessage("§6Gamemode: §eSet " + pd.getDisplayName() + "§e's gamemode to adventure!");
+				target.sendMessage("§6Gamemode: §e" + name + "§e set your gamemode to adventure!");
+			} else if (args[0].startsWith("3")) {
 				target.setGameMode(GameMode.ADVENTURE);
 				sender.sendMessage("§6Gamemode: §eSet " + pd.getDisplayName() + "§e's gamemode to adventure!");
 				target.sendMessage("§6Gamemode: §e" + name + "§e set your gamemode to adventure!");
