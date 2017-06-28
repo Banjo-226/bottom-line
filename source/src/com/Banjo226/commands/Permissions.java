@@ -17,7 +17,7 @@ public class Permissions {
 	public static final Permission BROADCAST = new Permission("bottomline.broadcast");
 	public static final Permission MOTD = new Permission("bottomline.motd");
 	public static final Permission ADMINCHAT = new Permission("bottomline.adminchat");
-	public static final Permission FLY = new Permission("bottonline.fly");
+	public static final Permission FLY = new Permission("bottomline.fly");
 	public static final Permission TELEPORT = new Permission("bottomline.teleport");
 	public static final Permission GOD = new Permission("bottomline.god");
 	public static final Permission TPA = new Permission("bottomline.tpa");
@@ -65,6 +65,8 @@ public class Permissions {
 	public static final Permission WEATHER = new Permission("bottomline.weather");
 	public static final Permission MSGTOGGLE = new Permission("bottomline.msgtoggle");
 	public static final Permission BACK = new Permission("bottomline.back");
+	public static final Permission SPAWN_MOB = new Permission("bottomline.spawnmob");
+	public static final Permission KILLALL = new Permission("bottomline.killall");
 
 	// Others-sub permissions [--> toggle for other people]
 	public static final Permission FLY_OTHERS = new Permission("bottomline.fly.others");
@@ -93,7 +95,6 @@ public class Permissions {
 	public static final Permission TELEPORT_HERE = new Permission("bottomline.teleport.here");
 	public static final Permission TELEPORT_TOGGLE = new Permission("bottomline.teleport.toggle");
 	public static final Permission REPLY = new Permission("bottomline.message.reply");
-	public static final Permission JAIL_MODIFY = new Permission("bottomline.jail.modify");
 	public static final Permission JAIL_OTHER = new Permission("bottomline.jail.util");
 	public static final Permission RELOADCONFIG = new Permission("bottomline.core.reload");
 	public static final Permission STATUS = new Permission("bottomline.core.status");
@@ -122,6 +123,7 @@ public class Permissions {
 	public static final Permission PLUGINS = new Permission("bottomline.plugins");
 	public static final Permission VERSION = new Permission("bottomline.version");
 	public static final Permission CPS_EXCEPTION = new Permission("bottomline.cpsexception");
+	public static final Permission BREAK_BYPASS = new Permission("bottomline.break.bypass");
 
 	// Sign permissions
 	public static final Permission MODIFY_FEED_SIGN = new Permission("bottomline.signs.modify.feed");
