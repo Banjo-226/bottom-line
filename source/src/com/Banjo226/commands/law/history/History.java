@@ -2,6 +2,8 @@ package com.Banjo226.commands.law.history;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
@@ -23,7 +25,7 @@ public class History extends Cmd {
 	@SuppressWarnings("deprecation")
 	public void run(CommandSender sender, String[] args) {
 		if (args.length == 0) {
-			Util.invalidArgCount(sender, "History", "Check the history of a player, Eg: their mutes.", "/history [player]", "/history clear [player]", "/history add [player] [mute|jail|ban|freeze|kick] <reason>");
+			Util.invalidArgCount(sender, "History", "Check the history of a player, Eg: their mutes.", "/history [player]", "/history clear [player]", "/history add [player] [mute|jail|ban|tempban|freeze|kick] <timestamp (only for timed punishments)> <reason>");
 			return;
 		}
 
@@ -60,7 +62,17 @@ public class History extends Cmd {
 			return;
 		} else if (args.length >= 1 && args[0].equalsIgnoreCase("add")) {
 			if (args.length == 1) {
-				Util.invalidArgCount(sender, "History", "Add a history entry.", "/history add [player] [mutes|jails|bans|tempbans|freezes|kicks] <timestamp (only for timed punishments)> <reason>");
+				Util.invalidArgCount(sender, "History", "Add a history entry.", "/history add [player] [mute|jail|ban|tempban|freeze|kick] <timestamp (only for timed punishments)> <reason>");
+				return;
+			}
+			
+			String regex = "(?:(?<h>\\d+)h)?(?:(?<m>\\d+)m)?(?:(?<s>\\d+)s)?(?:(?<d>\\d+)d)?";
+
+			Pattern p = Pattern.compile(regex);
+			Matcher m = p.matcher(args[3].toString());
+
+			if (!m.matches()) {
+				Util.invalidTimestamp(sender, "History", args[3]);
 				return;
 			}
 
@@ -120,8 +132,21 @@ public class History extends Cmd {
 			SimpleDateFormat sdf = new SimpleDateFormat("(z) dd/MM/yy hh:mm:ss a");
 			Date date = new Date();
 
-			pd.addHistory(ts, msg.trim(), sender.getName(), sdf.format(date), args[3]);
-			sender.sendMessage("§6History: §eAdded history entry.");
+			try {
+				pd.addHistory(ts, msg.trim(), sender.getName(), sdf.format(date), args[3]);
+				sender.sendMessage("§6History: §eAdded history entry.");
+			} catch (ArrayIndexOutOfBoundsException e) {
+				if (args.length >= 4) {
+					for (int i = 4; i < args.length; i++) {
+						msg += args[i] + " ";
+					}
+				} else
+					msg = "Misconduct";
+				
+				pd.addHistory(ts, msg.trim(), sender.getName(), "no date", args[2]); // 'no date' is there so then the method can continue to work. See PlayerData.java for more info.
+				sender.sendMessage("§6History: §eAdded history entry.");
+			}
+
 			return;
 		}
 
