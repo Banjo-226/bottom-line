@@ -6,4 +6,4 @@ BottomLine is a new free Essentials plugin covering some of the most essential, 
 This project is under the MIT license. More information about this license can be found [here](https://en.wikipedia.org/wiki/MIT_License)
 
 ### Development
-The development for this plugin is done on Eclipse Mars.1, compiled with Java 1.7, on a MacBook Air 2013 (8GB RAM, i7 Intel Processor) on OS X El Capitan (10.11.2), with a 27 inch Apple Thunderbolt Display.
+The development for this plugin is done on Eclipse Neon, compiled with Java 1.7, on a MacBook Air 2013 (8GB RAM, i7 Intel Processor) on macOS Sierra (10.12.1), with a 27 inch Apple Thunderbolt Display. BottomLine uses Minecraft version 1.10.
