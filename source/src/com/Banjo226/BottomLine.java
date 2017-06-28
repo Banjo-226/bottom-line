@@ -3,15 +3,13 @@
  *  BottomLine
  *
  *  Created by Banjo226 on 31 Oct 2015 at 4:45 pm AEST
- *  Copyright © 2015-2016 Banjo226. All rights reserved.
+ *  Copyright © 2015-2017 Banjo226. All rights reserved.
  */
 
 package com.Banjo226;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -34,6 +32,7 @@ import com.Banjo226.commands.inventory.item.Item;
 import com.Banjo226.commands.inventory.sub.Open;
 import com.Banjo226.commands.law.Freeze;
 import com.Banjo226.commands.law.Jail;
+import com.Banjo226.commands.law.JailUtil;
 import com.Banjo226.commands.law.Mute;
 import com.Banjo226.commands.law.ban.BanJoinListener;
 import com.Banjo226.commands.player.AFK;
@@ -42,6 +41,7 @@ import com.Banjo226.commands.player.PowerTool;
 import com.Banjo226.commands.player.gamemode.QuickGM;
 import com.Banjo226.commands.replace.Plugins;
 import com.Banjo226.commands.replace.Version;
+import com.Banjo226.commands.world.time.FreezeTimer;
 import com.Banjo226.commands.world.time.QuickTime;
 import com.Banjo226.commands.world.weather.QuickWeather;
 import com.Banjo226.events.ConfigListener;
@@ -73,15 +73,15 @@ import net.milkbowl.vault.permission.Permission;
  * <code>BottomLine</code> </br>
  * </br>
  * Created by Banjo226 on 31 Oct 2015 at 4:45 pm AEST </br>
- * Copyright © 2015-2016 Banjo226. All rights reserved.
+ * Copyright © 2015-2017 Banjo226. All rights reserved.
  * 
  * @see {@link https://github.com/Banjo-226/bottom-line/wiki}
  * @author Banjo226
- * @version 1.2 major
+ * @version 1.2.9
  */
 
 public class BottomLine extends JavaPlugin implements Listener {
-	public static BottomLine bl;
+	private static BottomLine bl;
 
 	public PluginDescriptionFile pdf;
 	public String vers;
@@ -109,13 +109,19 @@ public class BottomLine extends JavaPlugin implements Listener {
 		servervs = servervs.substring(servervs.lastIndexOf(".") + 1);
 		file = new File(this.getDataFolder(), "config.yml");
 
-		registerEvents(this, new MOTD(), new JoinLeaveListener(), new AdminChat(), new God(), new AFK(), new ConfigListener(), new WeatherListener(), new Mute(), new Jail(), new NewPlayerListener(), new Plugins(), new Version(), new Freeze(), new BanJoinListener(),
-				new Open(), new Item(), new ClicksPerSecondListener(), new CommandSpy(), new PowerTool(), new DeathListener(), new ChatEventManager(), new FeedSign(), new HealSign(), new RespawnListener(), new QuickGM(), new FormatSigns(), new KitSign(),
-				new QuickTime(), new QuickWeather());
+		registerEvents(this, new MOTD(), new JoinLeaveListener(), new AdminChat(), new God(), new AFK(), new ConfigListener(), new WeatherListener(), new Mute(), new Jail(), new JailUtil(), new NewPlayerListener(), new Plugins(), new Version(), new Freeze(),
+				new BanJoinListener(), new Open(), new Item(), new ClicksPerSecondListener(), new CommandSpy(), new PowerTool(), new DeathListener(), new ChatEventManager(), new FeedSign(), new HealSign(), new RespawnListener(), new QuickGM(), new FormatSigns(),
+				new KitSign(), new QuickTime(), new QuickWeather());
 		setup();
+
+		if (servervs.startsWith("1.9")) {
+			debug("It appears that you are using 1.9, some features may not work, or may be slower to load.");
+		}
 
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TicksPerSecond(), 100L, 1L); // updates the tps
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new ClicksPerSecond(), 0L, 20L); // Updating the rates for CPS
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new FreezeTimer(), 0L, getConfig().getLong("time-freeze-seconds") * 20L); // to enable
+																																		// time freeze
 
 		debug("Enabled Bottom Line (" + pdf.getDescription() + ") v" + vers + ".");
 
@@ -165,23 +171,7 @@ public class BottomLine extends JavaPlugin implements Listener {
 		new Permissions();
 
 		if (getConfig().getBoolean("metrics") == true) {
-			try {
-				HttpURLConnection url = (HttpURLConnection) new URL("http://mcstats.org").openConnection();
-				url.setRequestMethod("HEAD");
-				url.setConnectTimeout(5000);
-				int response = url.getResponseCode();
-
-				if (response == HttpURLConnection.HTTP_OK) {
-					Metrics m = new Metrics(this);
-					m.start();
-
-					debug("Started metrics!");
-				} else {
-					warning("Metrics is currently down (response code " + response + ")");
-				}
-			} catch (Exception e) {
-				warning("Could not connect to metrics; server is most likely down!");
-			}
+			Metrics m = new Metrics(this);
 		}
 
 		if (Bukkit.getServer().getPluginManager().getPlugin("Vault") != null) {
@@ -210,9 +200,7 @@ public class BottomLine extends JavaPlugin implements Listener {
 		// Our command manager instance
 		CommandManager cmd = new CommandManager();
 
-		/*
-		 * A loop that loops through everything in the plugin.yml file, if its a command, we'll register it.
-		 */
+		// A loop that loops through everything in the plugin.yml file, if its a command, we'll register it.
 		for (Entry<String, Map<String, Object>> entry : pdf.getCommands().entrySet()) {
 			String command = entry.getKey();
 			this.getCommand(command).setExecutor(cmd);
@@ -220,9 +208,7 @@ public class BottomLine extends JavaPlugin implements Listener {
 			this.getCommand(command).setTabCompleter(cmd);
 		}
 
-		/*
-		 * Checks if the commands have been registered for the law systems
-		 */
+		// Checks if the commands have been registered for the law systems
 		if (Bukkit.getPluginManager().getPlugin("LiteBans") != null) {
 			String[] punishments = { "ban", "unban", "tempban", "kick" };
 
