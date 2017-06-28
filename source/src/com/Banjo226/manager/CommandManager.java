@@ -60,6 +60,9 @@ import com.Banjo226.commands.teleportation.spawn.Spawn;
 import com.Banjo226.commands.teleportation.warp.Warp;
 import com.Banjo226.commands.teleportation.warp.WarpUtil;
 import com.Banjo226.commands.world.Break;
+import com.Banjo226.commands.world.mob.KillAll;
+import com.Banjo226.commands.world.mob.SpawnMob;
+import com.Banjo226.commands.world.time.FreezeTime;
 import com.Banjo226.commands.world.time.Time;
 import com.Banjo226.commands.world.weather.Weather;
 
@@ -125,6 +128,10 @@ public class CommandManager implements Listener, CommandExecutor, TabCompleter {
 		cmds.put(new Hat(), "hat");
 		cmds.put(new Weather(), "weather");
 		cmds.put(new MsgToggle(), "msgtoggle");
+		cmds.put(new Back(), "back");
+		cmds.put(new SpawnMob(), "spawnmob");
+		cmds.put(new KillAll(), "killall");
+		cmds.put(new FreezeTime(), "freezetime");
 	}
 
 	public boolean onCommand(CommandSender sender, Command c, String lbl, String[] args) {
