@@ -17,8 +17,8 @@ banned:
     end: 1449313915969
     sender: '§8[§4Admin§8] §7§oTesterBot'
 history:
-  kicks:
+  kick:
   - '§8[§e(AEDT) 26/11/15 03:34:23 PM§8] §6Example of History§e, Punisher: §6TesterBot'
-  bans:
+  ban:
   - '§8[§e(AEDT) 26/11/15 03:56:42 PM§8] §6Example of temp-ban§e, Punisher: §6TesterBot'
 nickname: '&7&oNotch'
