@@ -32,7 +32,7 @@ public class Break extends Cmd {
 
 		for (int i = 0; i < Store.breakbl.size(); i++) {
 			Material mat = Material.matchMaterial(Store.breakbl.get(i));
-			if (block.getType().equals(mat)) {
+			if (block.getType().equals(mat) && !sender.hasPermission(Permissions.BREAK_BYPASS)) {
 				ItemStack ite = new ItemStack(mat);
 				sender.sendMessage("§cBreak: §4The item to remove is blacklisted (" + ite.getType().toString() + ", " + mat.getId() + ")");
 				return;
